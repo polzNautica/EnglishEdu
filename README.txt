@@ -10,10 +10,10 @@ This Application use:
 ### Installation
 
 1. Clone the repository
-git clone https://github.com/bubblevy/bubblesmart.git
+git clone https://github.com/polzNautica/lisaedu.git
 
 2. Change Directory
-cd bubblesmart
+cd lisaedu
 
 3. Copy .env
 cp .env.example .env
@@ -41,4 +41,4 @@ php artisan db:seed
 php artisan serve
 
 ### License
-The BubbleSmart is open-sourced licensed under the MIT license (https://github.com/bubblevy/bubblesmart/blob/main/LICENSE).
+The LisaEdu is open-sourced licensed under the MIT license (https://github.com/polzNautica/lisaedu/blob/main/LICENSE).
