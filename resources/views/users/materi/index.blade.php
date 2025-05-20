@@ -1,64 +1,200 @@
 @extends('layouts.main.index')
 @section('container')
-<h1 class="fs-5">Huruf Aksara</h1>
-<div class="row">
-  <div class="d-flex flex-wrap" id="icons-container">
-    @foreach ($materis as $huruf)
-    @if($huruf->category == "huruf")
-    <div class="box card icon-card cursor-pointer text-center mb-4 mx-2" data-source-audio="{{ $huruf->audio }}">
+<h1 class="fs-5 mt-4">Past Simple (Regular Verbs)</h1>
+<div class="overflow-auto pb-2">
+  <div class="d-flex flex-nowrap gap-3" style="scroll-snap-type: x mandatory;">
+    @forelse ($materis->where('category', 'past_simple_regular_verbs') as $lesson)
+      <div class="card shadow-sm" style="width: 500px; height:500px; flex: 0 0 auto; scroll-snap-align: start;">
+        <img src="@if($lesson->image === 'logo-aplikasi/logo.png') 
+                  {{ asset('assets/img/logo-aplikasi/logo.png') }}
+              @elseif(Storage::disk('public')->exists($lesson->image)) 
+                  {{ asset('storage/' . $lesson->image) }} 
+              @else 
+                  {{ asset('assets/img/' . $lesson->image) }} 
+              @endif"
+            class="card-img-top" style="height:150px; object-fit: contain;" alt="Lesson image: {{ $lesson->title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ $lesson->title }}</h5>
+          <div class="card-text" style="max-height: 150px; overflow: auto;">
+            {!! Str::limit(strip_tags($lesson->text, '<h1>'), 250, '...') !!}
+          </div>
+        </div>
+        <div class="card-footer text-end bg-transparent border-top-0">
+          <a href="{{ route('lesson.show', $lesson->id) }}" class="btn btn-sm btn-outline-primary">See more</a>
+        </div>
+      </div>
+    @empty
+      <p class="text-muted">No lessons found.</p>
+    @endforelse
+    <div class="card shadow-sm" style="width: 500px; height:500px; flex: 0 0 auto; scroll-snap-align: start;">
+      <img src='assets/img/logo-aplikasi/logo.png'
+        class="card-img-top" 
+        style="height:150px; object-fit: contain;" 
+        alt="Lesson image">
       <div class="card-body">
-        <h2><img src="@if(Storage::disk('public')->exists($huruf->image)) {{ asset('storage/'. $huruf->image) }} @else {{ asset('assets/img/'. $huruf->image) }} @endif" style="width: 45px;" alt="aksara {{ $huruf->title }}"></h2>
-        <p class="icon-name text-capitalize text-truncate mb-0">{{ $huruf->title }}</p>
+        <h5 class="card-title">Title Test Interactive Quiz</h5>
+        <div class="card-text" style="max-height: 150px; overflow: auto;">
+          <h1>Text Test Interactive Quiz</h1>
+          <p>
+            This is Text Test Interactive Quiz Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quos...
+          </p>
+        </div>
+      </div>
+      <div class="card-footer text-end bg-transparent border-top-0">
+        <a href="{{ route('test.show') }}" class="btn btn-sm btn-outline-primary">See more</a>
       </div>
     </div>
-    @endif
-    @endforeach
-  </div>
-</div>
-<div class="row">
-  <h1 class="fs-5 mt-2">Pasangan</h1>
-  <div class="d-flex flex-wrap" id="icons-container">
-    @foreach ($materis as $pasangan)
-    @if($pasangan->category == "pasangan")
-    <div class="box card icon-card cursor-pointer text-center  mb-4 mx-2">
-      <div class="card-body">
-        <h2><img src="@if(Storage::disk('public')->exists($pasangan->image)) {{ asset('storage/'. $pasangan->image) }} @else {{ asset('assets/img/'. $pasangan->image) }} @endif" style="width: 40px;" alt="pasangan {{ $pasangan->title }}"></h2>
-        <p class="icon-name text-capitalize text-truncate mb-0">{{ $pasangan->title }}</p>
-      </div>
-    </div>
-    @endif
-    @endforeach
-  </div>
-</div>
-
-<div class="row">
-  <h1 class="fs-5 mt-3">Sandhangan</h1>
-  <div class="d-flex flex-wrap" id="icons-container">
-    @foreach ($materis as $sandhangan)
-    @if($sandhangan->category == "sandhangan")
-    <div class="box card icon-card cursor-pointer text-center mb-4 mx-2">
-      <div class="card-body">
-        <h2><img src="@if(Storage::disk('public')->exists($sandhangan->image)) {{ asset('storage/'. $sandhangan->image) }} @else {{ asset('assets/img/'. $sandhangan->image) }} @endif" style="width: 30px;" alt="sandhangan {{ $sandhangan->title }}"></h2>
-        @if($sandhangan->title == 'taling_tarung')
-        <p class="icon-name text-capitalize text-truncate mb-0" style="font-size: 12px;">Taling Tarung</p>
-        @else
-        <p class="icon-name text-capitalize text-truncate mb-0">{{ $sandhangan->title }}</p>
-        @endif
-      </div>
-    </div>
-    @endif
-    @endforeach
   </div>
 </div>
 
+<h1 class="fs-5 mt-4">Past Simple (Irregular Verbs)</h1>
+<div class="overflow-auto pb-2">
+  <div class="d-flex flex-nowrap gap-3" style="scroll-snap-type: x mandatory;">
+    @forelse ($materis->where('category', 'past_simple_irregular_verbs') as $lesson)
+      <div class="card shadow-sm" style="width: 500px; height:500px; flex: 0 0 auto; scroll-snap-align: start;">
+        <img src="@if($lesson->image === 'logo-aplikasi/logo.png') 
+                  {{ asset('assets/img/logo-aplikasi/logo.png') }}
+              @elseif(Storage::disk('public')->exists($lesson->image)) 
+                  {{ asset('storage/' . $lesson->image) }} 
+              @else 
+                  {{ asset('assets/img/' . $lesson->image) }} 
+              @endif"
+            class="card-img-top" style="height:150px; object-fit: contain;" alt="Lesson image: {{ $lesson->title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ $lesson->title }}</h5>
+          <div class="card-text" style="max-height: 150px; overflow: auto;">
+            {!! Str::limit(strip_tags($lesson->text, '<h1>'), 250, '...') !!}
+          </div>
+        </div>
+        <div class="card-footer text-end bg-transparent border-top-0">
+          <a href="{{ route('lesson.show', $lesson->id) }}" class="btn btn-sm btn-outline-primary">See more</a>
+        </div>
+      </div>
+    @empty
+      <!-- <p class="text-muted">No lessons found.</p> -->
+    @endforelse
+    <div class="card shadow-sm" style="width: 500px; height:500px; flex: 0 0 auto; scroll-snap-align: start;">
+      <img src='assets/img/logo-aplikasi/logo.png'
+        class="card-img-top" 
+        style="height:150px; object-fit: contain;" 
+        alt="Lesson image">
+      <div class="card-body">
+        <h5 class="card-title">Title Test Interactive Quiz</h5>
+        <div class="card-text" style="max-height: 150px; overflow: auto;">
+          <h1>Text Test Interactive Quiz</h1>
+          <p>
+            This is Text Test Interactive Quiz Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quos...
+          </p>
+        </div>
+      </div>
+      <div class="card-footer text-end bg-transparent border-top-0">
+        <a href="{{ route('test2.show') }}" class="btn btn-sm btn-outline-primary">See more</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-@foreach($materis as $audio)
-@if($audio->audio)
-<audio class="d-none" id="{{ $audio->audio }}" controls>
-  <source src="@if(Storage::disk('public')->exists($audio->audio)) {{ asset('storage/'. $audio->audio) }} @else {{ asset('assets/'. $audio->audio) }} @endif" type="audio/mpeg">
-</audio>
-@endif
-@endforeach
+<h1 class="fs-5 mt-4">Past Continous</h1>
+<div class="overflow-auto pb-2">
+  <div class="d-flex flex-nowrap gap-3" style="scroll-snap-type: x mandatory;">
+    @forelse ($materis->where('category', 'past_continuous') as $lesson)
+      <div class="card shadow-sm" style="width: 500px; height:500px; flex: 0 0 auto; scroll-snap-align: start;">
+        <img src="@if($lesson->image === 'logo-aplikasi/logo.png') 
+                  {{ asset('assets/img/logo-aplikasi/logo.png') }}
+              @elseif(Storage::disk('public')->exists($lesson->image)) 
+                  {{ asset('storage/' . $lesson->image) }} 
+              @else 
+                  {{ asset('assets/img/' . $lesson->image) }} 
+              @endif"
+            class="card-img-top" style="height:150px; object-fit: contain;" alt="Lesson image: {{ $lesson->title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ $lesson->title }}</h5>
+          <div class="card-text" style="max-height: 150px; overflow: auto;">
+            {!! Str::limit(strip_tags($lesson->text, '<h1>'), 250, '...') !!}
+          </div>
+        </div>
+        <div class="card-footer text-end bg-transparent border-top-0">
+          <a href="{{ route('lesson.show', $lesson->id) }}" class="btn btn-sm btn-outline-primary">See more</a>
+        </div>
+      </div>
+    @empty
+      <p class="text-muted">No lessons found.</p>
+    @endforelse
+  </div>
+</div>
+
+<h1 class="fs-5 mt-4">Past Perfect</h1>
+<div class="overflow-auto pb-2">
+  <div class="d-flex flex-nowrap gap-3" style="scroll-snap-type: x mandatory;">
+    @forelse ($materis->where('category', 'past_perfect') as $lesson)
+      <div class="card shadow-sm" style="width: 500px; height:500px; flex: 0 0 auto; scroll-snap-align: start;">
+        <img src="@if($lesson->image === 'logo-aplikasi/logo.png') 
+                  {{ asset('assets/img/logo-aplikasi/logo.png') }}
+              @elseif(Storage::disk('public')->exists($lesson->image)) 
+                  {{ asset('storage/' . $lesson->image) }} 
+              @else 
+                  {{ asset('assets/img/' . $lesson->image) }} 
+              @endif"
+            class="card-img-top" style="height:150px; object-fit: contain;" alt="Lesson image: {{ $lesson->title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ $lesson->title }}</h5>
+          <div class="card-text" style="max-height: 150px; overflow: auto;">
+            {!! Str::limit(strip_tags($lesson->text, '<h1>'), 250, '...') !!}
+          </div>
+        </div>
+        <div class="card-footer text-end bg-transparent border-top-0">
+          <a href="{{ route('lesson.show', $lesson->id) }}" class="btn btn-sm btn-outline-primary">See more</a>
+        </div>
+      </div>
+    @empty
+      <p class="text-muted">No lessons found.</p>
+    @endforelse
+  </div>
+</div>
+
+<h1 class="fs-5 mt-4">Storytelling</h1>
+<div class="overflow-auto pb-2">
+  <div class="d-flex flex-nowrap gap-3" style="scroll-snap-type: x mandatory;">
+    @forelse ($materis->where('category', 'storytelling') as $lesson)
+      <div class="card shadow-sm" style="width: 500px; height:500px; flex: 0 0 auto; scroll-snap-align: start;">
+        <img src="@if($lesson->image === 'logo-aplikasi/logo.png') 
+                  {{ asset('assets/img/logo-aplikasi/logo.png') }}
+              @elseif(Storage::disk('public')->exists($lesson->image)) 
+                  {{ asset('storage/' . $lesson->image) }} 
+              @else 
+                  {{ asset('assets/img/' . $lesson->image) }} 
+              @endif"
+            class="card-img-top" style="height:150px; object-fit: contain;" alt="Lesson image: {{ $lesson->title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ $lesson->title }}</h5>
+          <div class="card-text" style="max-height: 150px; overflow: auto;">
+            {!! Str::limit(strip_tags($lesson->text, '<h1>'), 250, '...') !!}
+          </div>
+        </div>
+        <div class="card-footer text-end bg-transparent border-top-0">
+          <a href="{{ route('lesson.show', $lesson->id) }}" class="btn btn-sm btn-outline-primary">See more</a>
+        </div>
+      </div>
+    @empty
+      <p class="text-muted">No lessons found.</p>
+    @endforelse
+    <!-- <div class="card shadow-sm" style="width: 500px; height:500px; flex: 0 0 auto; scroll-snap-align: start;">
+      <img src='logo-aplikasi/logo.png'
+        class="card-img-top" 
+        style="height:150px; object-fit: contain;" 
+        alt="Lesson image">
+      <div class="card-body">
+        <h5 class="card-title">Test Title</h5>
+        <div class="card-text" style="max-height: 150px; overflow: auto;">
+          Test text
+        </div>
+      </div>
+      <div class="card-footer text-end bg-transparent border-top-0">
+        <a href="{{ route('test.show') }}" class="btn btn-sm btn-outline-primary">See more</a>
+      </div>
+    </div> -->
+  </div>
+</div>
 
 @section('script')
 <script src="{{ asset('assets/js/materi/index.js') }}"></script>

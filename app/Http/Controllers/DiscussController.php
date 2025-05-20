@@ -30,7 +30,7 @@ class DiscussController extends Controller
         $validatedData['user_id'] = auth()->user()->id;
 
         Thread::create($validatedData);
-        return back()->with('addTopicSuccess', 'Thread berhasil ditambah!');
+        return back()->with('addTopicSuccess', 'Thread added successfully!');
     }
 
     // add & unlike

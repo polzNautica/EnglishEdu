@@ -47,7 +47,7 @@ class PengaturanUsersController extends Controller
         ]);
         User::where('id', auth()->user()->id)
             ->update($validatedData);
-        return redirect('/pengaturan')->with('updateEmailUser', 'Email berhasil diupdate!');
+        return redirect('/pengaturan')->with('updateEmailUser', 'Email updated successfully!');
     }
 
     public function store(Request $request)
@@ -55,7 +55,7 @@ class PengaturanUsersController extends Controller
         $rules = [
             'name' => 'required|string|max:100',
             'alamat' => 'Max:255',
-            'gender' => 'in:Laki-Laki,Perempuan',
+            'gender' => 'in:Male,Female',
             'tanggal_lahir' => '',
             'image' => 'image|file|max:500|dimensions:ratio=1/1'
         ];
@@ -72,7 +72,7 @@ class PengaturanUsersController extends Controller
             $validatedData['image'] = $request->file('image')->store('profil-images');
         }
         User::where('id', auth()->user()->id)->update($validatedData);
-        return redirect('/pengaturan')->with('updateUserBerhasil', 'Data user berhasil diupdate!');
+        return redirect('/pengaturan')->with('updateUserBerhasil', 'Data user updated successfully!');
     }
 
     public function changepassword(Request $request)
@@ -86,10 +86,10 @@ class PengaturanUsersController extends Controller
             $hashPassword = bcrypt($validatedData['passwordBaru']);
             User::where('id', auth()->user()->id)
                 ->update(['password' => $hashPassword]);
-            return redirect('/pengaturan')->with('passwordUpdateSuccess', 'Password berhasil diupdate!');
+            return redirect('/pengaturan')->with('passwordUpdateSuccess', 'Your password updated successfully!');
             exit;
         } else {
-            return redirect('/pengaturan')->with('passwordLamaSalah', 'Password lama Anda salah!');
+            return redirect('/pengaturan')->with('passwordLamaSalah', 'Your old password is Wrong!');
         }
     }
 }

@@ -8,15 +8,15 @@
 <li class="menu-item {{ Request::is('admin/data-materi*') ? 'active' : '' }}">
   <a class="menu-link cursor-pointer" onclick="window.location.href='/admin/data-materi'">
     <i class="menu-icon tf-icons bx bx-book-content"></i>
-    <div>Data Materi</div>
+    <div>Lessons Data</div>
   </a>
 </li>
 @endcan
 @can('user')
-<li class="menu-item {{ Request::is('materi') ? 'active' : '' }}">
+<li class="menu-item {{ Request::is('materi*') ? 'active' : '' }}">
   <a class="menu-link cursor-pointer" onclick="window.location.href='/materi'">
     <i class="menu-icon tf-icons bx bx-book-content"></i>
-    <div>Materi</div>
+    <div>Lessons</div>
   </a>
 </li>
 <li class="menu-item {{ Request::is('quiz*') ? 'active' : '' }}">
@@ -44,7 +44,7 @@
 <li class="menu-item {{ Request::is('nilai*') ? 'active' : '' }}">
   <a class="menu-link cursor-pointer" onclick="window.location.href='/nilai'">
     <i class="menu-icon tf-icons bx bx-receipt"></i>
-    <div>Nilai</div>
+    <div>Scores</div>
   </a>
 </li>
 @endcan
@@ -52,25 +52,25 @@
 <li class="menu-item {{ Request::is('admin/laporan*') ? 'active' : '' }}">
   <a class="menu-link cursor-pointer" onclick="window.location.href='/admin/laporan'">
     <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
-    <div>Laporan</div>
+    <div>Report</div>
   </a>
 </li>
 <li class="menu-item {{ Request::is('admin/pengguna*') ? 'active' : '' }}">
   <a class="menu-link cursor-pointer" onclick="window.location.href='/admin/pengguna'">
     <i class="menu-icon tf-icons bx bx-group"></i>
-    <div>Pengguna</div>
+    <div>Users</div>
   </a>
 </li>
-<li class="menu-item {{ Request::is('admin/ubah-teks*') ? 'active' : '' }}">
+<!-- <li class="menu-item {{ Request::is('admin/ubah-teks*') ? 'active' : '' }}">
   <a class="menu-link cursor-pointer" onclick="window.location.href='/admin/ubah-teks'">
     <i class="menu-icon tf-icons bx bx-transfer-alt"></i>
-    <div>Teks to Aksara</div>
+    <div>Text to Voice</div>
   </a>
-</li>
+</li> -->
 <li class="menu-item {{ Request::is('admin/pengaturan') ? 'active' : '' }}">
   <a class="menu-link cursor-pointer" onclick="window.location.href='/admin/pengaturan'">
     <i class="menu-icon tf-icons bx bx-cog"></i>
-    <div>Pengaturan</div>
+    <div>Settings</div>
   </a>
 </li>
 @endcan
@@ -78,13 +78,13 @@
 <li class="menu-item {{ Request::is('pengaturan') ? 'active' : '' }}">
   <a class="menu-link cursor-pointer" onclick="window.location.href='/pengaturan'">
     <i class="menu-icon tf-icons bx bx-cog"></i>
-    <div>Pengaturan</div>
+    <div>Settings</div>
   </a>
 </li>
-<li class="menu-item">
+<!-- <li class="menu-item">
   <a class="menu-link cursor-pointer" onclick="window.location.href='/docs/v1'">
     <i class="menu-icon tf-icons bx bx-support"></i>
-    <div>Dokumentasi</div>
+    <div>Documentation</div>
   </a>
-</li>
+</li> -->
 @endcan

@@ -12,9 +12,9 @@ $(".buttonDeleteHistory").on("click", function () {
     const data = $(this).data("delete-tanggal");
     const tanggalJam = data.split("|");
     $(".tanggalHistory").html(
-        "Anda yakin ingin menghapus histori quiz tanggal <strong>" +
+        "Are you sure you want to delete the quiz history dated <strong>" +
             tanggalJam[0] +
-            "jam" +
+            "hour" +
             tanggalJam[1] +
             "</strong> ?"
     );

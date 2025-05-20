@@ -14,7 +14,7 @@
           </div>
           <h4 class="ms-1 mb-0">{{ $totalMember }}</h4>
         </div>
-        <p class="mb-1 fw-semibold">Total Pengguna</p>
+        <p class="mb-1 fw-semibold">Total Users</p>
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@
           </div>
           <h4 class="ms-1 mb-0">{{ $answersQuiz }}</h4>
         </div>
-        <p class="mb-1 fw-semibold">Jawab Quiz</p>
+        <p class="mb-1 fw-semibold">Answered Quiz</p>
       </div>
     </div>
   </div>
@@ -64,8 +64,8 @@
     <div class="card h-100">
       <div class="card-header">
         <div>
-          <h5 class="card-title m-0 me-2 fw-bold mb-2" style="font-family: poppins; font-size:1rem;">Data Pengguna</h5>
-          <small class="text-muted" style="font-family: poppins; font-size:12px; color:rgb(86, 106, 127) !important;">Total semua pengguna aplikasi</small>
+          <h5 class="card-title m-0 me-2 fw-bold mb-2" style="font-family: poppins; font-size:1rem;">Users Data</h5>
+          <small class="text-muted" style="font-family: poppins; font-size:12px; color:rgb(86, 106, 127) !important;">Total number of users in the application</small>
         </div>
       </div>
       <div class="card-body">
@@ -75,7 +75,7 @@
             <h2 class="mb-2" style="color:#566a7f;">{{ $totalMember}}</h2>
             <span>Total Pengguna</span>
           </div>
-          <div id="usersChart" data-laki-laki="{{ $totalLakiLaki }}" data-perempuan="{{ $totalPerempuan }}"></div>
+          <div id="usersChart" data-laki-laki="{{ $totalLakiLaki }}" data-perempuan="{{ $totalFemale }}"></div>
         </div>
         <ul class="p-0 m-0">
           @foreach($members as $member)
@@ -86,10 +86,10 @@
             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
               <div class="me-2">
                 <h6 class="mb-1 text-capitalize">{{ $member->name }}</h6>
-                <small class="text-muted d-block">Bergabung {{ $member->created_at->locale('id')->diffForHumans() }}</small>
+                <small class="text-muted d-block">Joined {{ $member->created_at->locale('en')->diffForHumans() }}</small>
               </div>
               <div class="user-progress d-flex align-items-center gap-1">
-                <span class="text-primary" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="left" title="Terverivikasi"><i class='bx bx-check-double bx-tada'></i></span>
+                <span class="text-primary" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="left" title="Verified"><i class='bx bx-check-double bx-tada'></i></span>
               </div>
             </div>
           </li>

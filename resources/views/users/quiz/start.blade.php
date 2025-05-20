@@ -42,7 +42,7 @@
           <li class="breadcrumb-item active">{{ $titleQuiz }}</li>
         </ol>
       </nav>
-      <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="modal" data-bs-target="#petunjukQuiz"><i class="bx bx-bulb text-primary mb-3 iconPetunjukQuiz" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Petunjuk Quiz" style="font-size: 20px;"></i></button>
+      <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="modal" data-bs-target="#petunjukQuiz"><i class="bx bx-bulb text-primary mb-3 iconPetunjukQuiz" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Quiz Instructions" style="font-size: 20px;"></i></button>
     </div>
     <div class="flash-message" data-flash-message="@if(session()->has('messages')) {{ session('messages') }} @endif"></div>
     <form action="/quiz" method="post" id="quizForm">
@@ -73,12 +73,12 @@
         @endforeach
       </ol>
       @endforeach
-      <button type="button" onclick="window.location.href='/quiz'" class="btn btn-danger mt-2 me-1 mb-2 btlQuiz"><i class='bx bx-share fs-5' style="margin-bottom: 3px;"></i>&nbsp;Batal</button>
-      <button type="submit" class="btn btn-primary mt-2 mb-2 buttonSumbitQuiz"><i class='bx bx-task fs-5' style="margin-bottom: 3px;"></i>&nbsp;Selesai</button>
+      <button type="button" onclick="window.location.href='/quiz'" class="btn btn-danger mt-2 me-1 mb-2 btlQuiz"><i class='bx bx-share fs-5' style="margin-bottom: 3px;"></i>&nbsp;Cancel</button>
+      <button type="submit" class="btn btn-primary mt-2 mb-2 buttonSumbitQuiz"><i class='bx bx-task fs-5' style="margin-bottom: 3px;"></i>&nbsp;Done</button>
     </form>
     @if($quizzes->isEmpty())
     <div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
-      <span style="font-size: medium;"><i class='bx bx-info-circle fs-5' style="margin-bottom: 2px;"></i>&nbsp;Belum ada pertanyaan disini!</span>
+      <span style="font-size: medium;"><i class='bx bx-info-circle fs-5' style="margin-bottom: 2px;"></i>&nbsp;There is no question yet!</span>
     </div>
     @endif
   </div>
@@ -90,16 +90,16 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-between">
-        <h5 class="modal-title text-primary fw-bold">Petunjuk Quiz&nbsp;<i class='bx bx-bulb fs-5' style="margin-bottom: 3px;"></i></h5>
-        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+        <h5 class="modal-title text-primary fw-bold">Quiz Instructions&nbsp;<i class='bx bx-bulb fs-5' style="margin-bottom: 3px;"></i></h5>
+        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i></button>
       </div>
       <div class="modal-body" style="margin-top: -10px;">
         <div class="row mb-2">
           <div class="col-sm">
-            <div class="mb-1"><strong style="font-weight: normal;">1. Klik pada jawaban untuk menjawab soal.</strong></div>
-            <div class="mb-1"><strong style="font-weight: normal;">2. Minimal mengerjakan satu soal.</strong></div>
-            <div class="mb-1"><strong style="font-weight: normal;">3. Tidak ada batas waktu saat mengerjakan.</strong></div>
-            <div><strong style="font-weight: normal;">4. Klik tombol <b>Selesai</b> jika anda sudah selesai mengerjakan.</strong></div>
+            <div class="mb-1"><strong style="font-weight: normal;">1. Click on an answer to respond to the question.</strong></div>
+            <div class="mb-1"><strong style="font-weight: normal;">2. You must answer at least one question.</strong></div>
+            <div class="mb-1"><strong style="font-weight: normal;">3. There is no time limit for answering.</strong></div>
+            <div><strong style="font-weight: normal;">4. Click the <b>Finish</b> button when you are done.</strong></div>
           </div>
         </div>
       </div>
@@ -112,15 +112,21 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-between">
-        <h5 class="modal-title text-primary fw-bold">Konfirmasi&nbsp;<i class='bx bx-check-shield fs-5' style="margin-bottom: 3px;"></i></h5>
-        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+        <h5 class="modal-title text-primary fw-bold">Confirmation&nbsp;<i class='bx bx-check-shield fs-5' style="margin-bottom: 3px;"></i></h5>
+        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal">
+          <i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i>
+        </button>
       </div>
       <div class="modal-body" style="margin-top: -10px;">
-        <div class="col-sm fs-6">Jika Anda sudah yakin dengan jawaban Anda, tekan <strong>'Kirim'</strong> untuk mengirim jawaban Anda.</div>
+        <div class="col-sm fs-6">If you are sure about your answers, press <strong>'Submit'</strong> to send them.</div>
       </div>
       <div class="modal-footer" style="margin-top: -5px;">
-        <button type="button" class="btn btn-outline-danger cancelConfirmQuiz" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Batal</button>
-        <button type="button" class="btn btn-primary confirmQuiz"><i class='bx bx-paper-plane fs-6' style="margin-bottom: 3px;"></i>&nbsp;Kirim</button>
+        <button type="button" class="btn btn-outline-danger cancelConfirmQuiz" data-bs-dismiss="modal">
+          <i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Cancel
+        </button>
+        <button type="button" class="btn btn-primary confirmQuiz">
+          <i class='bx bx-paper-plane fs-6' style="margin-bottom: 3px;"></i>&nbsp;Submit
+        </button>
       </div>
     </div>
   </div>

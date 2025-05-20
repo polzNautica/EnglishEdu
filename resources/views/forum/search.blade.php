@@ -27,7 +27,7 @@
       <div>
         <form action="/view/discuss/search">
           <div class="input-group">
-            <input type="search" class="form-control" name="q" id="search" value="{{request('q')}}" style="border: 1px solid #d9dee3; width:300px" placeholder="Cari Topik Diskusi..." autocomplete="off" />
+            <input type="search" class="form-control" name="q" id="search" value="{{request('q')}}" style="border: 1px solid #d9dee3; width:300px" placeholder="Search Topic of Discussions..." autocomplete="off" />
           </div>
         </form>
       </div>
@@ -46,7 +46,7 @@
               <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-1">
                 <div class="me-2">
                   <h5 class="mb-0 fw-semibold">{{ $thread->user->name }}@if($thread->user->is_admin) <i class='bx bxs-badge-check text-primary fs-6' style="margin-bottom: 1px;" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Administrator"></i> @endif</h5>
-                  <small class="text-muted">Dipost {{ $thread->created_at->locale('id')->diffForHumans() }}</small>
+                  <small class="text-muted">Dipost {{ $thread->created_at->locale('en')->diffForHumans() }}</small>
                 </div>
                 @if($thread->user->id == auth()->user()->id)
                 <div class="dropdown">
@@ -54,7 +54,7 @@
                     <i class="bx bx-chevron-down"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item cursor-pointer button-delete-topic" data-message-topic="{{ $thread->title }}" data-code="{{ encrypt($thread->id) }}"><i class='bx bx-trash fs-5 mb-1 me-2'></i>Hapus</a>
+                    <a class="dropdown-item cursor-pointer button-delete-topic" data-message-topic="{{ $thread->title }}" data-code="{{ encrypt($thread->id) }}"><i class='bx bx-trash fs-5 mb-1 me-2'></i>Delete</a>
                   </div>
                 </div>
                 @endif
@@ -131,14 +131,14 @@
       @csrf
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-between">
-          <h5 class="modal-title text-primary fw-bold">Tambah Thread Baru&nbsp;<i class='bx bx-message-dots fs-5' style="margin-bottom: 1px;"></i></h5>
-          <button type="button" class="btn p-0 dropdown-toggle hide-arrow cancelModalAddTopic" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+          <h5 class="modal-title text-primary fw-bold">Add New Thread&nbsp;<i class='bx bx-message-dots fs-5' style="margin-bottom: 1px;"></i></h5>
+          <button type="button" class="btn p-0 dropdown-toggle hide-arrow cancelModalAddTopic" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i></button>
         </div>
         <div class="modal-body">
           <div class="row">
             <div class="col mb-3">
               <label for="title" class="form-label required-label">Judul</label>
-              <input type="text" id="title" name="title" value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" placeholder="Masukkan judul thread" autocomplete="off" required>
+              <input type="text" id="title" name="title" value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" placeholder="Enter thread title" autocomplete="off" required>
               @error('title')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -148,8 +148,8 @@
           </div>
           <div class="row">
             <div class="col">
-              <label for="content" class="form-label required-label">Deskripsi</label>
-              <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" autocomplete="off" placeholder="Masukkan deskripsi thread" rows="4" required>{{ old('content') }}</textarea>
+              <label for="content" class="form-label required-label">Description</label>
+              <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" autocomplete="off" placeholder="Enter thread description" rows="4" required>{{ old('content') }}</textarea>
               @error('content')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -159,8 +159,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-danger cancelModalAddTopic" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Batal</button>
-          <button type="submit" class="btn btn-primary"><i class='bx bx-paper-plane fs-6' style="margin-bottom: 3px;"></i>&nbsp;Tambah</button>
+          <button type="button" class="btn btn-outline-danger cancelModalAddTopic" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class='bx bx-paper-plane fs-6' style="margin-bottom: 3px;"></i>&nbsp;Add</button>
         </div>
       </div>
     </form>
@@ -174,15 +174,15 @@
       <input type="hidden" id="code-thread" name="code" value="old('code')">
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-between">
-          <h5 class="modal-title text-primary fw-bold">Konfirmasi&nbsp;<i class='bx bx-check-shield fs-5' style="margin-bottom: 3px;"></i></h5>
-          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+          <h5 class="modal-title text-primary fw-bold">Confirmation&nbsp;<i class='bx bx-check-shield fs-5' style="margin-bottom: 3px;"></i></h5>
+          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i></button>
         </div>
         <div class="modal-body" style="margin-top: -10px;">
           <div class="col-sm fs-6 topicMessagesDelete"></div>
         </div>
         <div class="modal-footer" style="margin-top: -5px;">
-          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Tidak</button>
-          <button type="submit" class="btn btn-primary"><i class='bx bx-trash fs-6' style="margin-bottom: 3px;"></i>&nbsp;Ya, Hapus!</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;No</button>
+          <button type="submit" class="btn btn-primary"><i class='bx bx-trash fs-6' style="margin-bottom: 3px;"></i>&nbsp;Yes, Delete!</button>
         </div>
       </div>
     </form>

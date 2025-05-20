@@ -433,7 +433,7 @@
     // Order Statistics Chart
     // --------------------------------------------------------------------
     const dataLakiLaki = $("#usersChart").data("laki-laki");
-    const dataPerempuan = $("#usersChart").data("perempuan");
+    const dataFemale = $("#usersChart").data("perempuan");
     const usersChart = document.querySelector("#usersChart"),
         orderChartConfig = {
             chart: {
@@ -441,8 +441,8 @@
                 width: 130,
                 type: "donut",
             },
-            labels: ["Laki-Laki", "Perempuan"],
-            series: [dataLakiLaki, dataPerempuan],
+            labels: ["Male", "Female"],
+            series: [dataLakiLaki, dataFemale],
             colors: [config.colors.primary, "#ff6384"],
             stroke: {
                 width: 5,
@@ -480,7 +480,7 @@
                                         (
                                             (val /
                                                 (dataLakiLaki +
-                                                    dataPerempuan)) *
+                                                    dataFemale)) *
                                             100
                                         )
                                             .toFixed(1)

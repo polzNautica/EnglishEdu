@@ -26,7 +26,7 @@
   <div class="card-header">
     <div class="card-title mb-0 me-1">
       <h5 class="mb-1">Quizzes&nbsp;<i class="bx bx-joystick fs-5"></i></h5>
-      <p class="text-muted mb-0">Berikut @if($quizzes->count() > 1) kumpulan @endif quiz yang bisa anda kerjakan.</p>
+      <p class="text-muted mb-0">Here is @if($quizzes->count() > 1) a collection of @endif quizzes that you can complete.</p>
     </div>
   </div>
   <div class="card-body">
@@ -38,12 +38,12 @@
             <div class="d-flex justify-content-between mt-2">
               <h5 class="card-title text-capitalize"> @if (preg_match("/[\x{0000}-\x{007F}]/u", $quiz->title)) {{ Str::limit($quiz->title, 28, '...') }} @else {{ Str::limit($quiz->title, 20, '...') }} @endif</h5>
               <div>
-                <button type="button" data-title-quiz="{{ $quiz->title }}" data-description-quiz="{{ $quiz->description }}" data-total-soal-quiz="{{ $quiz->question->count() }}" class="btn p-0 dropdown-toggle hide-arrow buttonDetails" data-bs-toggle="modal" data-bs-target="#quizDetails"><i class="bx bx-info-circle mb-2 text-primary" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Klik untuk melihat detail quiz"></i></button>
+                <button type="button" data-title-quiz="{{ $quiz->title }}" data-description-quiz="{{ $quiz->description }}" data-total-soal-quiz="{{ $quiz->question->count() }}" class="btn p-0 dropdown-toggle hide-arrow buttonDetails" data-bs-toggle="modal" data-bs-target="#quizDetails"><i class="bx bx-info-circle mb-2 text-primary" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Click to view quiz details"></i></button>
               </div>
             </div>
-            <h6 class="card-subtitle text-muted" style="font-size: 12px; margin-bottom:10px;">Dibuat {{ $quiz->created_at->locale('id')->diffForHumans() }}</h6>
+            <h6 class="card-subtitle text-muted" style="font-size: 12px; margin-bottom:10px;">Made {{ $quiz->created_at->locale('en')->diffForHumans() }}</h6>
             <p class="mt-4">{{ Str::limit($quiz->description, 100, '...') }}</p>
-            <button type="button" class="w-100 btn btn-label-primary" onclick="window.location.href='/quiz/start/{{ $quiz->slug }}'"><i class='bx bx-joystick fs-5' style="margin-bottom: 3px;"></i>&nbsp;Mulai Quiz</button>
+            <button type="button" class="w-100 btn btn-label-primary" onclick="window.location.href='/quiz/start/{{ $quiz->slug }}'"><i class='bx bx-joystick fs-5' style="margin-bottom: 3px;"></i>&nbsp;Start Quiz</button>
           </div>
         </div>
       </div>
@@ -83,24 +83,24 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-between">
-        <h5 class="modal-title text-primary fw-bold">Detail Quiz&nbsp;<i class='bx bx-joystick fs-5' style="margin-bottom: 2px;"></i></h5>
-        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+        <h5 class="modal-title text-primary fw-bold">Quiz Details&nbsp;<i class='bx bx-joystick fs-5' style="margin-bottom: 2px;"></i></h5>
+        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i></button>
       </div>
       <div class="modal-body">
         <div class="row mb-3">
-          <label class="col-sm-3 col-form-label">Judul</label>
+          <label class="col-sm-3 col-form-label">Title</label>
           <div class="col-sm-9">
             <div class="form-control" id="titleQuiz"></div>
           </div>
         </div>
         <div class="row mb-3">
-          <label class="col-sm-3 col-form-label">Deskripsi</label>
+          <label class="col-sm-3 col-form-label">Description</label>
           <div class="col-sm-9">
             <div class="form-control" id="descriptionQuiz"></div>
           </div>
         </div>
         <div class="row mb-3">
-          <label class="col-sm-3 col-form-label">Total Soal</label>
+          <label class="col-sm-3 col-form-label">Total Questions</label>
           <div class="col-sm-9">
             <div class="form-control" id="totalSoalQuiz"></div>
           </div>

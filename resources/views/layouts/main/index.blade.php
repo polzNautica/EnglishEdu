@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="{{ asset('assets/css/toast.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/vendors/libs/sweetalert2/sweetalert.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
   @yield('css')
   <script src="{{ asset('assets/vendors/assets/vendor/js/helpers.js') }}"></script>
   <script src="{{ asset('assets/vendors/assets/vendor/libs/jquery/jquery.js') }}"></script>
@@ -31,6 +32,11 @@
 @yield('style')
 
 <body>
+  <div class="star-field">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+  </div>
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container ">
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
@@ -65,14 +71,14 @@
                 @php
                 $currentTime = now();
                 $hour = $currentTime->hour;
-                if ($hour >= 5 && $hour < 11) { $greeting='Selamat Pagi' ; } elseif ($hour>= 11 && $hour < 15) { $greeting='Selamat Siang' ; } elseif ($hour>= 15 && $hour < 18) { $greeting='Selamat Sore' ; } else { $greeting='Selamat Malam' ; } @endphp<h5>{{ $greeting }},&nbsp;<strong>{{ auth()->user()->name }}@if(auth()->user()->is_admin)&nbsp;<i class='bx bxs-badge-check text-primary' style="font-size: 1rem; margin-bottom:2px;" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Administrator"></i>@endif</strong></h5>
+                if ($hour >= 5 && $hour < 11) { $greeting='Good Morning' ; } elseif ($hour>= 11 && $hour < 15) { $greeting='Good Afternoon' ; } elseif ($hour>= 15 && $hour < 18) { $greeting='Good Evening' ; } else { $greeting='Good Night' ; } @endphp<h5>{{ $greeting }},&nbsp;<strong>{{ auth()->user()->name }}@if(auth()->user()->is_admin)&nbsp;<i class='bx bxs-badge-check text-primary' style="font-size: 1rem; margin-bottom:2px;" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Administrator"></i>@endif</strong></h5>
               </div>
             </div>
             <ul class="navbar-nav flex-row ms-auto">
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                   <div class="avatar avatar-online">
-                    <img src="@if(Storage::disk('public')->exists(auth()->user()->image)) {{ asset('storage/'. auth()->user()->image) }} @else {{ asset('assets/img/'. auth()->user()->image) }} @endif" alt="foto profil" class="w-px-40 h-auto rounded-circle" />
+                    <img src="@if(Storage::disk('public')->exists(auth()->user()->image)) {{ asset('storage/'. auth()->user()->image) }} @else {{ asset('assets/img/'. auth()->user()->image) }} @endif" alt="Profile Photo" class="w-px-40 h-auto rounded-circle" />
                   </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -81,7 +87,7 @@
                       <div class="d-flex">
                         <div class="flex-shrink-0 me-3">
                           <div class="avatar avatar-online">
-                            <img src="@if(Storage::disk('public')->exists(auth()->user()->image)) {{ asset('storage/'. auth()->user()->image) }} @else {{ asset('assets/img/'. auth()->user()->image) }} @endif" alt="foto profil" class="w-px-40 h-auto rounded-circle" />
+                            <img src="@if(Storage::disk('public')->exists(auth()->user()->image)) {{ asset('storage/'. auth()->user()->image) }} @else {{ asset('assets/img/'. auth()->user()->image) }} @endif" alt="Profile Photo" class="w-px-40 h-auto rounded-circle" />
                           </div>
                         </div>
                         <div class="flex-grow-1">
@@ -97,7 +103,7 @@
                   <li>
                     <button type="button" class="dropdown-item" onclick="window.location.href='@if(auth()->user()->is_admin) /admin/pengaturan @else /pengaturan @endif'">
                       <i class="bx bx-cog me-2"></i>
-                      <span class="align-middle">Pengaturan</span>
+                      <span class="align-middle">Settings</span>
                     </button>
                   </li>
                   <li>
@@ -116,7 +122,7 @@
         </nav>
 
         <div class="content-wrapper">
-          <div class="container-xxl flex-grow-1 container-p-y">
+          <div class="container-xxl flex-grow-1 container-p-y overflow-auto">
             @yield('container')
           </div>
 

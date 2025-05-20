@@ -24,7 +24,7 @@
 <div class="container-xxl container-p-y">
   <div class="misc-wrapper">
     <h2 class="mb-2 mx-2">403 | FORBIDDEN</h2>
-    <p class="mb-4 mx-2">Oops! Anda Tidak Memiliki Hak Akses Kesini!</p>
+    <p class="mb-4 mx-2">Oops! You do not have access rights here!</p>
     <button onclick="window.location.href = '/'" class="btn btn-dark"><i class='bx bxs-home bx-tada fs-6 me-1' style="margin-bottom: 3.4px;"></i> Back to Home</button>
     <div class="mt-3">
       <img src="{{ asset('assets/vendors/assets/img/illustrations/error-403.svg') }}" alt="403 Error Forbidden" width="430" class="img-fluid">

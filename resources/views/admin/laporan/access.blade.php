@@ -48,15 +48,15 @@
       <div class="card-header d-flex align-items-center justify-content-between" style="margin-bottom: -0.7rem;">
         <div class="justify-content-start">
           <select data-url="{{ $dataquiz->slug }}" id="score-filter" class="form-select" style="border: 1px solid #d9dee3;">
-            <option disabled selected>Filter Nilai</option>
-            <option value="tertinggi" @if(request('filter')==='tertinggi' ) selected @endif>Nilai Tertinggi</option>
-            <option value="terendah" @if(request('filter')==='terendah' ) selected @endif>Nilai Terendah</option>
+            <option disabled selected>Filter Scores</option>
+            <option value="tertinggi" @if(request('filter')==='tertinggi' ) selected @endif>Highest Scores</option>
+            <option value="terendah" @if(request('filter')==='terendah' ) selected @endif>Lowest Scores</option>
           </select>
         </div>
         <div class="justify-content-end">
           <form action="/admin/laporan/{{ $dataquiz->slug }}/search">
             <div class="input-group">
-              <input type="search" class="form-control" name="q" id="search" style="border: 1px solid #d9dee3;" placeholder="Cari Data Pengguna..." autocomplete="off" />
+              <input type="search" class="form-control" name="q" id="search" style="border: 1px solid #d9dee3;" placeholder="Search Users Data..." autocomplete="off" />
             </div>
           </form>
         </div>
@@ -67,25 +67,24 @@
             <table class="table table-striped">
               <thead class="table-dark">
                 <tr>
-                  <th class="text-white">No</th>
-                  <th class="text-white">Nama Lengkap</th>
-                  <th class="text-white">Jenis Kelamin</th>
-                  <th class="text-white">Soal Yang Dikerjakan</th>
-                  <th class="text-white">Soal Tidak Dikerjakan</th>
-                  <th class="text-white">Tanggal Submit Quiz</th>
-                  <th class="text-white text-center">Nilai</th>
-                  <th class="text-white text-center">Aksi</th>
-                </tr>
+                <th class="text-white">No.</th>
+                <th class="text-white">Full Name</th>
+                <th class="text-white">Gender</th>
+                <th class="text-white">Answered Questions</th>
+                <th class="text-white">Questions Not Answered</th>
+                <th class="text-white">Quiz Submission Date</th>
+                <th class="text-white text-center">Score</th>
+                <th class="text-white text-center">Action</th>                </tr>
               </thead>
               <tbody class="table-border-bottom-0">
                 @foreach($reports as $index => $data)
                 <tr>
                   <td>{{ $reports->firstItem() + $index }}</td>
                   <td>{{ $data->user->name }}</td>
-                  <td>@if($data->user->gender == 'Laki-Laki')<span class="badge bg-label-primary fw-bold">Laki-Laki</span>@else<span class="badge fw-bold" style="color: #ff6384 !important; background-color: #ffe5eb !important;">Perempuan</span>@endif</td>
-                  <td><i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Task Icon" class="bx bx-task bx-tada text-primary" style="font-size: 19px;"></i>&nbsp;<span class="badge bg-label-primary">{{ $data->answer_user->where('answer_id', !null)->count() }} Soal dikerjakan</span></td>
-                  <td>{!! (($data->quiz->load('question')->question->count() - $data->answer_user->where('answer_id', !null)->count()) > 0) ? '<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Danger Icon" class="bx bx-error bx-flashing text-danger" style="font-size: 19px;"></i>&nbsp;<span class="badge bg-label-danger">'. $data->quiz->load('question')->question->count() - $data->answer_user->where('answer_id', !null)->count() . ' Soal tidak dikerjakan</span>' : '<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Check Icon" class="bx bx-check-double bx-tada text-success" style="font-size: 20px;"></i>&nbsp;<span class="badge bg-label-dark">Dikerjakan Semua</span>' !!}</td>
-                  <td>{{ $data->created_at->locale('id')->isoFormat('D MMMM YYYY | H:mm') }}</td>
+                  <td>@if($data->user->gender == 'Male')<span class="badge bg-label-primary fw-bold">Male</span>@else<span class="badge fw-bold" style="color: #ff6384 !important; background-color: #ffe5eb !important;">Female</span>@endif</td>
+                  <td><i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Task Icon" class="bx bx-task bx-tada text-primary" style="font-size: 19px;"></i>&nbsp;<span class="badge bg-label-primary">{{ $data->answer_user->where('answer_id', !null)->count() }} Answered Questions</span></td>
+                  <td>{!! (($data->quiz->load('question')->question->count() - $data->answer_user->where('answer_id', !null)->count()) > 0) ? '<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Danger Icon" class="bx bx-error bx-flashing text-danger" style="font-size: 19px;"></i>&nbsp;<span class="badge bg-label-danger">'. $data->quiz->load('question')->question->count() - $data->answer_user->where('answer_id', !null)->count() . ' Unanswered questions</span>' : '<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Check Icon" class="bx bx-check-double bx-tada text-success" style="font-size: 20px;"></i>&nbsp;<span class="badge bg-label-dark">All Answered</span>' !!}</td>
+                  <td>{{ $data->created_at->locale('en')->isoFormat('D MMMM YYYY | H:mm') }}</td>
                   <td class="text-center"><span class="badge badge-center bg-dark rounded-pill">{{ $data->score }}</span></td>
                   <td class="text-center">
                     <button type="button" class="btn btn-icon btn-primary btn-sm" onclick="window.location.href='/admin/laporan/details/{{ $data->code }}'" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Details">
@@ -96,7 +95,7 @@
                 @endforeach
                 @if($reports->isEmpty())
                 <tr>
-                  <td colspan="100" class="text-center">Data tidak ditemukan!</td>
+                  <td colspan="100" class="text-center">Data not found!</td>
                 </tr>
                 @endif
               </tbody>

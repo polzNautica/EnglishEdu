@@ -29,7 +29,7 @@ $(".buttonEditPengguna").on("click", function () {
             $("#edit_nama_lengkap_user").val(data[0].name);
             $("#edit_username_user").val(data[0].username);
             $("#edit_email_user").val(data[0].email);
-            data[0].gender == "Laki-Laki"
+            data[0].gender == "Male"
                 ? $("#gender_laki-laki").attr("selected", true)
                 : $("#gender_perempuan").attr("selected", true);
             $("#formModalAdminEditPengguna").modal("show");

@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin',
             'image' => 'profil-images/5.jpeg',
             'is_admin' => 1,
-            'gender' => 'Laki-Laki',
+            'gender' => 'Male',
             'password' => bcrypt('@Admin123')
         ]);
 
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'daniellafrancescag@gmail.com',
             'username' => 'member',
             'image' => 'profil-images/1.jpeg',
-            'gender' => 'Perempuan',
+            'gender' => 'Female',
             'password' => bcrypt('@Member123')
         ]);
 
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'angieanatasya@gmail.com',
             'username' => 'angieanatasya',
             'image' => 'profil-images/3.jpeg',
-            'gender' => 'Perempuan',
+            'gender' => 'Female',
             'password' => bcrypt('@Angieanatasya123')
         ]);
 
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'lucafrancesco@gmail.com',
             'username' => 'lucafrancesco',
             'image' => 'profil-images/6.jpg',
-            'gender' => 'Laki-Laki',
+            'gender' => 'Male',
             'password' => bcrypt('@Lucafrancesco123')
         ]);
 
@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'laurentgabriella@gmail.com',
             'username' => 'laurentgabriella',
             'image' => 'profil-images/4.jpeg',
-            'gender' => 'Perempuan',
+            'gender' => 'Female',
             'password' => bcrypt('@Laurentgabriella123')
         ]);
 
@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Annabella Angelina',
             'email' => 'anabellaangelina@gmail.com',
             'username' => 'anabellaangelina',
-            'gender' => 'Perempuan',
+            'gender' => 'Female',
             'image' => 'profil-images/2.jpeg',
             'password' => bcrypt('@Anabellaangelina123')
         ]);
@@ -88,7 +88,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'leonardovittorio@gmail.com',
             'username' => 'leonardovittorio',
             'image' => 'profil-images/5.png',
-            'gender' => 'Laki-Laki',
+            'gender' => 'Male',
             'password' => bcrypt('@Leonardovittorio123')
         ]);
 

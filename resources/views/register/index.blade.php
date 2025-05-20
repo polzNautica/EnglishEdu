@@ -56,11 +56,11 @@
               </a>
             </div>
             <h4 class="mb-2">Welcome to {{ $app[0]->name_app }}</h4>
-            <p class="mb-3">Silahkan daftar dan mulai belajar.</p>
+            <p class="mb-3">Please register and start learning.</p>
             <form id="formAuthentication" class="mb-3" action="/register" method="POST">
               @csrf
               <div class="mb-2">
-                <label for="namaLengkap" class="form-label required-label">Nama Lengkap</label>
+                <label for="namaLengkap" class="form-label required-label">Full Name</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="namaLengkap" name="name" value="{{ old('name') }}" placeholder="Enter your name" autocomplete="off" required />
                 @error('name')
                 <div class="invalid-feedback">
@@ -76,7 +76,7 @@
                   {{ $message }}
                 </div>
                 @else
-                <div class="form-text descUsername">Username minimal 5 karakter (Hanya boleh huruf & angka).</div>
+                <div class="form-text descUsername">Username must be at least 5 characters (Letters and numbers only).</div>
                 @enderror
               </div>
               <div class="mb-2">
@@ -89,11 +89,11 @@
                 @enderror
               </div>
               <div class="mb-2">
-                <label for="gender" class="form-label required-label">Jenis Kelamin</label>
+                <label for="gender" class="form-label required-label">Gender</label>
                 <select class="form-select @error('gender') is-invalid @enderror" name="gender" id="gender" style="cursor: pointer;">
-                  <option value="" disabled selected>Pilih Jenis Kelamin</option>
-                  <option id="laki-laki" @if(old('gender')=='Laki-Laki' ) selected @endif value="Laki-Laki">Laki-Laki</option>
-                  <option id="perempuan" @if(old('gender')=='Perempuan' ) selected @endif value="Perempuan">Perempuan</option>
+                  <option value="" disabled selected>Select your gender</option>
+                  <option id="laki-laki" @if(old('gender')=='Male' ) selected @endif value="Male">Male</option>
+                  <option id="perempuan" @if(old('gender')=='Female' ) selected @endif value="Female">Female</option>
                 </select>
                 @error('gender')
                 <div class="invalid-feedback" style="margin-bottom: -3px;">
@@ -112,11 +112,11 @@
                   {{ $message }}
                 </div>
                 @else
-                <div class="form-text"><i class='bx bx-error' style="font-size: 100%;"></i>&nbsp;Password minimal 8 karakter termasuk huruf kapital & kecil (A-Z), (a-z), angka (1-9), dan karakter unik (@,#,%,dll)</div>
+                <div class="form-text"><i class='bx bx-error' style="font-size: 100%;"></i>&nbsp;Password must be at least 8 characters, including uppercase and lowercase letters (A-Z, a-z), numbers (1-9), and special characters (@, #, %, etc.).</div>
                 @enderror
               </div>
               <div class="mb-3 form-password-toggle">
-                <label class="form-label required-label" for="password2">Ulangi Password</label>
+                <label class="form-label required-label" for="password2">Repeat Password</label>
                 <div class="input-group input-group-merge">
                   <input type="password" id="password2" class="form-control" name="password_confirmation" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" autocomplete="off" required />
                   <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
@@ -126,7 +126,7 @@
                 <div class="form-check">
                   <input class="form-check-input @error('terms') is-invalid @enderror" type="checkbox" id="terms-conditions" name="terms">
                   <label class="form-check-label" for="terms-conditions">
-                    Saya setuju dengan&nbsp;<a @error('terms') style="color:#ff3e1d;" @enderror href="/terms">syarat & ketentuan</a>
+                    I agree with&nbsp;<a @error('terms') style="color:#ff3e1d;" @enderror href="/terms">Terms and Conditions</a>
                   </label>
                 </div>
               </div>
@@ -135,7 +135,7 @@
               </div>
             </form>
             <p class="text-center">
-              <span>Sudah punya akun?</span>
+              <span>Already have an account?</span>
               <a href="/login">
                 <span>Log in</span>
               </a>

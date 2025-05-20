@@ -48,13 +48,13 @@
       <div class="card-header d-flex align-items-center justify-content-between" style="margin-bottom: -0.7rem;">
         <div class="justify-content-start">
           <button type="button" class="btn btn-xs btn-dark fw-bold p-2" data-bs-toggle="modal" data-bs-target="#formModalAdminAddQuestions">
-            <i class='bx bx-notepad fs-6' style="margin-bottom: 3px;"></i>&nbsp;TAMBAH SOAL
+            <i class='bx bx-notepad fs-6' style="margin-bottom: 3px;"></i>&nbsp;ADD QUESTIONS
           </button>
         </div>
         <div class="justify-content-end">
           <form action="/admin/data-quiz/q&a/{{ $code }}/search">
             <div class="input-group">
-              <input type="search" class="form-control" name="q" id="search" style="border: 1px solid #d9dee3;" value="{{ request('q') }}" placeholder="Cari Pertanyaan..." autocomplete="off" />
+              <input type="search" class="form-control" name="q" id="search" style="border: 1px solid #d9dee3;" value="{{ request('q') }}" placeholder="Search Questions..." autocomplete="off" />
             </div>
           </form>
         </div>
@@ -66,15 +66,15 @@
               <thead class="table-dark">
                 <tr>
                   <th class="text-white">No</th>
-                  <th class="text-white">Pertanyaan</th>
+                  <th class="text-white">Question</th>
                   <th class="text-white">Option 1</th>
                   <th class="text-white">Option 2</th>
                   <th class="text-white">Option 3</th>
                   <th class="text-white">Option 4</th>
                   <th class="text-white text-center">Score</th>
-                  <th class="text-white">Tanggal Pembuatan Soal</th>
-                  <th class="text-white">Tanggal Update Soal</th>
-                  <th class="text-white text-center">Aksi</th>
+                  <th class="text-white">Question Creation Date</th>
+                  <th class="text-white">Question Update Date</th>
+                  <th class="text-white text-center">Action</th>
                 </tr>
               </thead>
               <tbody class="table-border-bottom-0">
@@ -89,26 +89,26 @@
                   @foreach($q->answer as $answer)
                   @if($answer->correct === 1)
                   @if (preg_match("/[\x{0000}-\x{007F}]/u", $answer->answer))
-                  <td><span class="badge bg-label-success text-capitalize" style="font-size: 14px;">{{ $answer->answer }}</span>&nbsp;<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Jawaban Benar!" class="bx bx-check bx-tada text-success" style="font-size: 20px;"></i></td>
+                  <td><span class="badge bg-label-success text-capitalize" style="font-size: 14px;">{{ $answer->answer }}</span>&nbsp;<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Correct Answer!" class="bx bx-check bx-tada text-success" style="font-size: 20px;"></i></td>
                   @else
-                  <td><span class="badge bg-label-success text-capitalize" style="font-size: 17px;">{{ $answer->answer }}</span>&nbsp;<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Jawaban Benar!" class="bx bx-check bx-tada text-success" style="font-size: 20px;"></i></td>
+                  <td><span class="badge bg-label-success text-capitalize" style="font-size: 17px;">{{ $answer->answer }}</span>&nbsp;<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Correct Answer!" class="bx bx-check bx-tada text-success" style="font-size: 20px;"></i></td>
                   @endif
                   @else
                   @if (preg_match("/[\x{0000}-\x{007F}]/u", $answer->answer))
-                  <td><span class="badge bg-label-danger text-capitalize" style="font-size: 14px;">{{ $answer->answer }}</span>&nbsp;<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Jawaban Salah!" class="bx bx-x bx-tada text-danger" style="font-size: 20px;"></i></td>
+                  <td><span class="badge bg-label-danger text-capitalize" style="font-size: 14px;">{{ $answer->answer }}</span>&nbsp;<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Wrong Answer!" class="bx bx-x bx-tada text-danger" style="font-size: 20px;"></i></td>
                   @else
-                  <td><span class="badge bg-label-danger text-capitalize" style="font-size: 17px;">{{ $answer->answer }}</span>&nbsp;<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Jawaban Salah!" class="bx bx-x bx-tada text-danger" style="font-size: 20px;"></i></td>
+                  <td><span class="badge bg-label-danger text-capitalize" style="font-size: 17px;">{{ $answer->answer }}</span>&nbsp;<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Wrong Answer!" class="bx bx-x bx-tada text-danger" style="font-size: 20px;"></i></td>
                   @endif
                   @endif
                   @endforeach
                   <td class="text-center"><span class="badge badge-center bg-dark rounded-pill">{{ $q->score }}</span></td>
-                  <td>{{ $q->created_at->locale('id')->isoFormat('D MMMM YYYY | H:mm') }}</td>
-                  <td>{{ $q->updated_at->locale('id')->isoFormat('D MMMM YYYY | H:mm') }}</td>
+                  <td>{{ $q->created_at->locale('en')->isoFormat('D MMMM YYYY | H:mm') }}</td>
+                  <td>{{ $q->updated_at->locale('en')->isoFormat('D MMMM YYYY | H:mm') }}</td>
                   <td class="text-center">
                     <button type="button" class="btn btn-icon btn-primary btn-sm buttonEditQuestion" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Edit Quiz" data-edit-question="{{ $q->question  }}" data-code-question="{{ encrypt($q->id)  }}" data-edit-score="{{ $q->score  }}">
                       <span class="tf-icons bx bx-edit" style="font-size: 15px;"></span>
                     </button>
-                    <button type="button" class="btn btn-icon btn-danger btn-sm buttonDeleteQuestion" data-action="{{ $q->id  }}" data-delete-question="{{ $q->question  }}" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Hapus History Quiz">
+                    <button type="button" class="btn btn-icon btn-danger btn-sm buttonDeleteQuestion" data-action="{{ $q->id  }}" data-delete-question="{{ $q->question  }}" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Delete History Quiz">
                       <span class="tf-icons bx bx-trash" style="font-size: 14px;"></span>
                     </button>
                   </td>
@@ -139,14 +139,14 @@
       @csrf
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-between">
-          <h5 class="modal-title text-primary fw-bold">Tambah Pertanyaan <i class='bx bx-notepad fs-5' style="margin-bottom: 1px;"></i></h5>
-          <button type="button" class="btn p-0 dropdown-toggle hide-arrow cancelModalAddQuestion" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+          <h5 class="modal-title text-primary fw-bold">Add Questions <i class='bx bx-notepad fs-5' style="margin-bottom: 1px;"></i></h5>
+          <button type="button" class="btn p-0 dropdown-toggle hide-arrow cancelModalAddQuestion" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i></button>
         </div>
         <div class="modal-body">
           <div class="row">
             <div class="col mb-3">
-              <label for="question" class="form-label required-label">Pertanyaan</label>
-              <textarea class="form-control @error('question') is-invalid @enderror" id="question" name="question" placeholder="Masukkan pertanyaan disini." rows="3" autocomplete="off" required>{{ old('question') }}</textarea>
+              <label for="question" class="form-label required-label">Questions</label>
+              <textarea class="form-control @error('question') is-invalid @enderror" id="question" name="question" placeholder="Enter the question here." rows="3" autocomplete="off" required>{{ old('question') }}</textarea>
               @error('question')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -157,7 +157,7 @@
           <div class="row g-2 mb-3">
             <div class="col">
               <label for="option1" class="form-label required-label">Option 1</label>
-              <input type="text" id="option1" name="option[1]" value="{{ old('option.1') }}" class="form-control @error('option.1') is-invalid @enderror" autocomplete="off" placeholder="Option pertama" required>
+              <input type="text" id="option1" name="option[1]" value="{{ old('option.1') }}" class="form-control @error('option.1') is-invalid @enderror" autocomplete="off" placeholder="First option" required>
               @error('option.1')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -166,7 +166,7 @@
             </div>
             <div class="col">
               <label for="option2" class="form-label required-label">Option 2</label>
-              <input type="text" id="option2" name="option[2]" value="{{ old('option.2') }}" class="form-control @error('option.2') is-invalid @enderror" autocomplete="off" placeholder="Option kedua" required>
+              <input type="text" id="option2" name="option[2]" value="{{ old('option.2') }}" class="form-control @error('option.2') is-invalid @enderror" autocomplete="off" placeholder="Second option" required>
               @error('option.2')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -177,7 +177,7 @@
           <div class="row g-2 mb-3">
             <div class="col">
               <label for="option3" class="form-label required-label">Option 3</label>
-              <input type="text" id="option3" name="option[3]" value="{{ old('option.3') }}" class="form-control @error('option.3') is-invalid @enderror" autocomplete="off" placeholder="Option ketiga" required>
+              <input type="text" id="option3" name="option[3]" value="{{ old('option.3') }}" class="form-control @error('option.3') is-invalid @enderror" autocomplete="off" placeholder="Third option" required>
               @error('option.3')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -186,7 +186,7 @@
             </div>
             <div class="col">
               <label for="option4" class="form-label required-label">Option 4</label>
-              <input type="text" id="option4" name="option[4]" value="{{ old('option.4') }}" class="form-control @error('option.4') is-invalid @enderror" autocomplete="off" placeholder="Option keempat" required>
+              <input type="text" id="option4" name="option[4]" value="{{ old('option.4') }}" class="form-control @error('option.4') is-invalid @enderror" autocomplete="off" placeholder="Fourth option" required>
               @error('option.4')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -196,7 +196,7 @@
           </div>
           <div class="row g-2">
             <div class="col">
-              <label for="correct" class="form-label required-label">Jawaban Benar</label>
+              <label for="correct" class="form-label required-label">Correct Answer</label>
               <select class="form-select @error('correctAnswer') is-invalid @enderror" name="correctAnswer" id="correct" style="cursor: pointer;">
                 <option value="" selected disabled>Pilih Jawaban</option>
                 <option value="1" @if(old('correctAnswer')==1) selected @endif>Option 1</option>
@@ -212,7 +212,7 @@
             </div>
             <div class="col">
               <label for="score" class="form-label required-label">Score</label>
-              <input type="number" id="score" name="score" value="{{ old('score') }}" class="form-control @error('score') is-invalid @enderror" autocomplete="off" placeholder="Score untuk pertanyaan" required>
+              <input type="number" id="score" name="score" value="{{ old('score') }}" class="form-control @error('score') is-invalid @enderror" autocomplete="off" placeholder="Score for this question" required>
               @error('score')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -222,8 +222,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-danger cancelModalAddQuestion" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Batal</button>
-          <button type="submit" class="btn btn-primary"><i class='bx bx-paper-plane fs-6' style="margin-bottom: 3px;"></i>&nbsp;Tambah</button>
+          <button type="button" class="btn btn-outline-danger cancelModalAddQuestion" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class='bx bx-paper-plane fs-6' style="margin-bottom: 3px;"></i>&nbsp;Add</button>
         </div>
       </div>
     </form>
@@ -240,13 +240,13 @@
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-between">
           <h5 class="modal-title text-primary fw-bold">Edit Soal&nbsp;<i class='bx bx-notepad fs-5' style="margin-bottom: 1px;"></i></h5>
-          <button type="button" class="btn p-0 dropdown-toggle hide-arrow cancelModalEditQuestion" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+          <button type="button" class="btn p-0 dropdown-toggle hide-arrow cancelModalEditQuestion" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i></button>
         </div>
         <div class="modal-body">
           <div class="row">
             <div class="col mb-3">
-              <label for="editquestion" class="form-label required-label">Pertanyaan</label>
-              <textarea class="form-control @error('editQuestion') is-invalid @enderror" id="editquestion" name="editQuestion" placeholder="Masukkan pertanyaan disini." rows="3" autocomplete="off" required>{{ old('editQuestion') }}</textarea>
+              <label for="editquestion" class="form-label required-label">Questions</label>
+              <textarea class="form-control @error('editQuestion') is-invalid @enderror" id="editquestion" name="editQuestion" placeholder="Enter the question here." rows="3" autocomplete="off" required>{{ old('editQuestion') }}</textarea>
               @error('editQuestion')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -257,7 +257,7 @@
           <div class="row g-2 mb-3">
             <div class="col">
               <label for="editOption1" class="form-label required-label">Option 1</label>
-              <input type="text" id="editOption1" name="editOption[1]" value="{{ old('editOption.1') }}" class="form-control @error('editOption.1') is-invalid @enderror" autocomplete="off" placeholder="Option pertama" required>
+              <input type="text" id="editOption1" name="editOption[1]" value="{{ old('editOption.1') }}" class="form-control @error('editOption.1') is-invalid @enderror" autocomplete="off" placeholder="First option" required>
               @error('editOption.1')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -266,7 +266,7 @@
             </div>
             <div class="col">
               <label for="editOption2" class="form-label required-label">Option 2</label>
-              <input type="text" id="editOption2" name="editOption[2]" value="{{ old('editOption.2') }}" class="form-control @error('editOption.2') is-invalid @enderror" autocomplete="off" placeholder="Option kedua" required>
+              <input type="text" id="editOption2" name="editOption[2]" value="{{ old('editOption.2') }}" class="form-control @error('editOption.2') is-invalid @enderror" autocomplete="off" placeholder="Second option" required>
               @error('editOption.2')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -277,7 +277,7 @@
           <div class="row g-2 mb-3">
             <div class="col">
               <label for="editOption3" class="form-label required-label">Option 3</label>
-              <input type="text" id="editOption3" name="editOption[3]" value="{{ old('editOption.3') }}" class="form-control @error('editOption.3') is-invalid @enderror" autocomplete="off" placeholder="Option ketiga" required>
+              <input type="text" id="editOption3" name="editOption[3]" value="{{ old('editOption.3') }}" class="form-control @error('editOption.3') is-invalid @enderror" autocomplete="off" placeholder="Third option" required>
               @error('editOption.3')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -286,7 +286,7 @@
             </div>
             <div class="col">
               <label for="editOption4" class="form-label required-label">Option 4</label>
-              <input type="text" id="editOption4" name="editOption[4]" value="{{ old('editOption.4') }}" class="form-control @error('editOption.4') is-invalid @enderror" autocomplete="off" placeholder="Option keempat" required>
+              <input type="text" id="editOption4" name="editOption[4]" value="{{ old('editOption.4') }}" class="form-control @error('editOption.4') is-invalid @enderror" autocomplete="off" placeholder="Fourth option" required>
               @error('editOption.4')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -296,7 +296,7 @@
           </div>
           <div class="row g-2">
             <div class="col">
-              <label for="editCorrect" class="form-label required-label">Jawaban Benar</label>
+              <label for="editCorrect" class="form-label required-label">Correct Answer</label>
               <select class="form-select @error('editCorrectAnswer') is-invalid @enderror" name="editCorrectAnswer" id="editCorrect" style="cursor: pointer;">
                 <option value="" selected disabled>Pilih Jawaban</option>
                 <option class="dipilih1" value="1" @if(old('editCorrectAnswer')==1) selected @endif>Option 1</option>
@@ -312,7 +312,7 @@
             </div>
             <div class="col">
               <label for="editScore" class="form-label required-label">Score</label>
-              <input type="number" id="editScore" name="editScore" value="{{ old('editScore') }}" class="form-control @error('editScore') is-invalid @enderror" autocomplete="off" placeholder="Score untuk pertanyaan" required>
+              <input type="number" id="editScore" name="editScore" value="{{ old('editScore') }}" class="form-control @error('editScore') is-invalid @enderror" autocomplete="off" placeholder="Score for this question" required>
               @error('editScore')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -322,7 +322,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-danger cancelModalEditQuestion" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Batal</button>
+          <button type="button" class="btn btn-outline-danger cancelModalEditQuestion" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Cancel</button>
           <button type="submit" class="btn btn-primary"><i class='bx bx-save fs-6' style="margin-bottom: 3px;"></i>&nbsp;Update</button>
         </div>
       </div>
@@ -337,15 +337,15 @@
       @csrf
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-between">
-          <h5 class="modal-title text-primary fw-bold">Konfirmasi&nbsp;<i class='bx bx-check-shield fs-5' style="margin-bottom: 3px;"></i></h5>
-          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+          <h5 class="modal-title text-primary fw-bold">Confirmation&nbsp;<i class='bx bx-check-shield fs-5' style="margin-bottom: 3px;"></i></h5>
+          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i></button>
         </div>
         <div class="modal-body" style="margin-top: -10px;">
           <div class="col-sm fs-6 questionMessagesDelete"></div>
         </div>
         <div class="modal-footer" style="margin-top: -5px;">
-          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Tidak</button>
-          <button type="submit" class="btn btn-primary"><i class='bx bx-trash fs-6' style="margin-bottom: 3px;"></i>&nbsp;Ya, Hapus!</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;No</button>
+          <button type="submit" class="btn btn-primary"><i class='bx bx-trash fs-6' style="margin-bottom: 3px;"></i>&nbsp;Yes, Delete!</button>
         </div>
       </div>
     </form>

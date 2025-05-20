@@ -32,7 +32,7 @@
       <div class="card-header d-flex align-items-center justify-content-between" style="margin-bottom: -0.7rem;">
         <div class="justify-content-start">
           <button type="button" class="btn btn-xs btn-dark fw-bold p-2 buttonAddQuiz" data-bs-toggle="modal" data-bs-target="#formModalAdminQuiz">
-            <i class='bx bx-joystick fs-6'></i>&nbsp;TAMBAH QUIZ
+            <i class='bx bx-joystick fs-6'></i>&nbsp;ADD QUIZ
           </button>
         </div>
         <div class="justify-content-end">
@@ -49,14 +49,14 @@
             <table class="table table-striped">
               <thead class="table-dark">
                 <tr>
-                  <th class="text-white">No</th>
-                  <th class="text-white">Judul Quiz</th>
-                  <th class="text-white">Deskripsi Quiz</th>
-                  <th class="text-white text-center">Total Soal</th>
-                  <th class="text-white">Tanggal Pembuatan Quiz</th>
-                  <th class="text-white">Tanggal Update Quiz</th>
-                  <th class="text-white">Status</th>
-                  <th class="text-white text-center">Aksi</th>
+                <th class="text-white">No</th>
+                <th class="text-white">Quiz Title</th>
+                <th class="text-white">Quiz Description</th>
+                <th class="text-white text-center">Total Questions</th>
+                <th class="text-white">Quiz Creation Date</th>
+                <th class="text-white">Quiz Update Date</th>
+                <th class="text-white">Status</th>
+                <th class="text-white text-center">Action</th>
                 </tr>
               </thead>
               <tbody class="table-border-bottom-0">
@@ -70,17 +70,17 @@
                   @endif
                   <td>{{ Str::limit($quiz->description, 50, '...')}}</td>
                   <td class="text-center"><span class="badge badge-center bg-dark rounded-pill">{{ $quiz->question->count() }}</span></td>
-                  <td>{{ $quiz->created_at->locale('id')->isoFormat('D MMMM YYYY | H:mm') }}</td>
-                  <td>{{ $quiz->updated_at->locale('id')->isoFormat('D MMMM YYYY | H:mm') }}</td>
+                  <td>{{ $quiz->created_at->locale('en')->isoFormat('D MMMM YYYY | H:mm') }}</td>
+                  <td>{{ $quiz->updated_at->locale('en')->isoFormat('D MMMM YYYY | H:mm') }}</td>
                   <td>@if($quiz->status == 'Aktif')<span class="badge bg-label-success fw-bold">{{ $quiz->status }}</span>@else<span class="badge bg-label-danger fw-bold">{{ $quiz->status }}</span>@endif</td>
                   <td class="text-center">
-                    <button type="button" class="btn btn-icon btn-primary btn-sm" onclick="window.location.href='/admin/data-quiz/q&a/{{ $quiz->slug }}'" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Pertanyaan & Jawaban">
+                    <button type="button" class="btn btn-icon btn-primary btn-sm" onclick="window.location.href='/admin/data-quiz/q&a/{{ $quiz->slug }}'" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Questions and Answers">
                       <span class="tf-icons bx bx-show" style="font-size: 15px;"></span>
                     </button>
                     <button type="button" class="btn btn-icon btn-warning btn-sm buttonEditQuiz" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Edit Quiz" data-title-quiz="{{ $quiz->title }}" data-code-quiz="{{ $quiz->slug }}" data-desc-quiz="{{ $quiz->description }}" data-status-quiz="{{ $quiz->status }}">
                       <span class="tf-icons bx bx-edit" style="font-size: 15px;"></span>
                     </button>
-                    <button type="button" class="btn btn-icon btn-danger btn-sm buttonDeleteQuiz" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Hapus Quiz" data-code-quiz="{{ $quiz->slug }}" data-title-quiz="{{ $quiz->title }}">
+                    <button type="button" class="btn btn-icon btn-danger btn-sm buttonDeleteQuiz" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Delete Quiz" data-code-quiz="{{ $quiz->slug }}" data-title-quiz="{{ $quiz->title }}">
                       <span class="tf-icons bx bx-trash" style="font-size: 14px;"></span>
                     </button>
                   </td>
@@ -88,7 +88,7 @@
                 @endforeach
                 @if($allQuiz->isEmpty())
                 <tr>
-                  <td colspan="100" class="text-center">Data tidak ditemukan!</td>
+                  <td colspan="100" class="text-center">Data not found!</td>
                 </tr>
                 @endif
               </tbody>
@@ -112,13 +112,13 @@
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-between">
           <h5 class="modal-title text-primary fw-bold">Buat Quiz Baru&nbsp;<i class='bx bx-joystick fs-5' style="margin-bottom: 1px;"></i></h5>
-          <button type="button" class="btn p-0 dropdown-toggle hide-arrow cancelModalAddQuiz" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+          <button type="button" class="btn p-0 dropdown-toggle hide-arrow cancelModalAddQuiz" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i></button>
         </div>
         <div class="modal-body">
           <div class="row">
             <div class="col mb-3">
-              <label for="title" class="form-label required-label">Judul Quiz</label>
-              <input type="text" id="title" name="title" value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" placeholder="Masukkan judul quiz" autocomplete="off" required>
+              <label for="title" class="form-label required-label">Quiz Title</label>
+              <input type="text" id="title" name="title" value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" placeholder="Enter quiz title" autocomplete="off" required>
               @error('title')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -128,8 +128,8 @@
           </div>
           <div class="row">
             <div class="col">
-              <label for="deskripsi" class="form-label required-label">Deskripsi</label>
-              <textarea class="form-control @error('description') is-invalid @enderror" id="deskripsi" name="description" autocomplete="off" placeholder="Masukkan deskripsi quiz. (max 255 karakter)" rows="4" required>{{ old('description') }}</textarea>
+              <label for="deskripsi" class="form-label required-label">Description</label>
+              <textarea class="form-control @error('description') is-invalid @enderror" id="deskripsi" name="description" autocomplete="off" placeholder="Enter the quiz description. (max 255 characters)" rows="4" required>{{ old('description') }}</textarea>
               @error('description')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -139,8 +139,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-danger cancelModalAddQuiz" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Batal</button>
-          <button type="submit" class="btn btn-primary"><i class='bx bx-paper-plane fs-6' style="margin-bottom: 3px;"></i>&nbsp;Tambah</button>
+          <button type="button" class="btn btn-outline-danger cancelModalAddQuiz" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class='bx bx-paper-plane fs-6' style="margin-bottom: 3px;"></i>&nbsp;Add</button>
         </div>
       </div>
     </form>
@@ -157,13 +157,13 @@
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-between">
           <h5 class="modal-title text-primary fw-bold">Edit Quiz&nbsp;<i class='bx bx-joystick fs-5' style="margin-bottom: 1px;"></i></h5>
-          <button type="button" class="btn p-0 dropdown-toggle hide-arrow cancelModalEditQuiz" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+          <button type="button" class="btn p-0 dropdown-toggle hide-arrow cancelModalEditQuiz" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i></button>
         </div>
         <div class="modal-body">
           <div class="row">
             <div class="col mb-3">
-              <label for="titleEdit" class="form-label required-label">Judul Quiz</label>
-              <input type="text" id="titleEdit" name="titleQuiz" value="{{ old('titleQuiz') }}" class="form-control @error('titleQuiz') is-invalid @enderror" autocomplete="off" placeholder="Masukkan judul quiz" required>
+              <label for="titleEdit" class="form-label required-label">Quiz Title</label>
+              <input type="text" id="titleEdit" name="titleQuiz" value="{{ old('titleQuiz') }}" class="form-control @error('titleQuiz') is-invalid @enderror" autocomplete="off" placeholder="Enter quiz title" required>
               @error('titleQuiz')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -173,8 +173,8 @@
           </div>
           <div class="row">
             <div class="col">
-              <label for="deskripsiEdit" class="form-label required-label">Deskripsi</label>
-              <textarea class="form-control @error('descriptionQuiz') is-invalid @enderror" id="deskripsiEdit" name="descriptionQuiz" placeholder="Masukkan deskripsi quiz. (max 255 karakter)" rows="4" autocomplete="off" required>{{ old('descriptionQuiz') }}</textarea>
+              <label for="deskripsiEdit" class="form-label required-label">Description</label>
+              <textarea class="form-control @error('descriptionQuiz') is-invalid @enderror" id="deskripsiEdit" name="descriptionQuiz" placeholder="Enter the quiz description. (max 255 characters)" rows="4" autocomplete="off" required>{{ old('descriptionQuiz') }}</textarea>
               @error('descriptionQuiz')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -198,7 +198,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-danger cancelModalEditQuiz" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Batal</button>
+          <button type="button" class="btn btn-outline-danger cancelModalEditQuiz" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Cancel</button>
           <button type="submit" class="btn btn-primary"><i class='bx bx-save fs-6' style="margin-bottom: 3px;"></i>&nbsp;Update</button>
         </div>
       </div>
@@ -213,15 +213,15 @@
       @csrf
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-between">
-          <h5 class="modal-title text-primary fw-bold">Konfirmasi&nbsp;<i class='bx bx-check-shield fs-5' style="margin-bottom: 3px;"></i></h5>
-          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+          <h5 class="modal-title text-primary fw-bold">Confirmation&nbsp;<i class='bx bx-check-shield fs-5' style="margin-bottom: 3px;"></i></h5>
+          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i></button>
         </div>
         <div class="modal-body" style="margin-top: -10px;">
           <div class="col-sm fs-6 quizMessagesDelete"></div>
         </div>
         <div class="modal-footer" style="margin-top: -5px;">
-          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Tidak</button>
-          <button type="submit" class="btn btn-primary"><i class='bx bx-trash fs-6' style="margin-bottom: 3px;"></i>&nbsp;Ya, Hapus!</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;No</button>
+          <button type="submit" class="btn btn-primary"><i class='bx bx-trash fs-6' style="margin-bottom: 3px;"></i>&nbsp;Yes, Delete!</button>
         </div>
       </div>
     </form>

@@ -24,7 +24,7 @@
 <div class="container-xxl container-p-y">
   <div class="misc-wrapper">
     <h2 class="mb-2 mx-2">404 | NOT FOUND</h2>
-    <p class="mb-4 mx-2">Oops! Halaman Tidak Ditemukan</p>
+    <p class="mb-4 mx-2">Oops! Page Not Found!</p>
     <button onclick="window.location.href = '/'" class="btn btn-dark"><i class='bx bxs-home bx-tada fs-6 me-1' style="margin-bottom: 3.4px;"></i> Back to Home</button>
     <div class="mt-3">
       <img src="{{ asset('assets/vendors/assets/img/illustrations/page-misc-error-light.png') }}" alt="404 Error Not Found" width="500" class="img-fluid">

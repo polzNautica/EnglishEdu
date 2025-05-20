@@ -30,10 +30,10 @@
               <thead class="table-dark">
                 <tr>
                   <th class="text-white">No</th>
-                  <th class="text-white">Judul Quiz</th>
-                  <th class="text-white">Deskripsi Quiz</th>
-                  <th class="text-white text-center">Total Yang Mengerjakan Quiz</th>
-                  <th class="text-white text-center">Aksi</th>
+                  <th class="text-white">Quiz Title</th>
+                  <th class="text-white">Quiz Description</th>
+                  <th class="text-white text-center">Total Quiz Participants</th>
+                  <th class="text-white text-center">Action</th>
                 </tr>
               </thead>
               <tbody class="table-border-bottom-0">
@@ -46,9 +46,9 @@
                   <td style="font-size: 18px;">{{ Str::limit($data->title, 20, '...') }}</td>
                   @endif
                   <td>{{ Str::limit($data->description, 50, '...')}}</td>
-                  <td class="text-center"><span class="badge bg-label-primary fw-bold">{{ $data->result->count() }}&nbsp;Orang</span></td>
+                  <td class="text-center"><span class="badge bg-label-primary fw-bold">{{ $data->result->count() }}&nbsp;Participants</span></td>
                   <td class="text-center">
-                    <button type="button" class="btn btn-icon btn-primary btn-sm" onclick="window.location.href='/admin/laporan/{{ $data->slug }}'" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Lihat yang mengerjakan">
+                    <button type="button" class="btn btn-icon btn-primary btn-sm" onclick="window.location.href='/admin/laporan/{{ $data->slug }}'" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="View Participants">
                       <span class="tf-icons bx bx-show" style="font-size: 15px;"></span>
                     </button>
                   </td>

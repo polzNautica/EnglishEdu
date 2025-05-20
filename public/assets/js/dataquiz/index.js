@@ -28,9 +28,9 @@ $(".buttonDeleteQuiz").on("click", function () {
     const data = $(this).data("title-quiz");
     const action = $(this).data("code-quiz");
     $(".quizMessagesDelete").html(
-        "Anda yakin ingin menghapus quiz dengan judul <strong>'" +
+        "Are you sure you want to delete <strong>'" +
             data +
-            "'</strong> ? Semua data yang terkait akan ikut terhapus termasuk pertanyaan dan jawaban!"
+            "'</strong> ? All data will be deleted."
     );
     $("#formDeleteQuiz").attr("action", "/admin/data-quiz/delete/" + action);
     $("#deleteQuizConfirm").modal("show");

@@ -79,12 +79,12 @@
         <div class="d-flex justify-content-between align-items-center flex-wrap mb-2 gap-1">
           <div class="me-1 mb-2">
             <h5 class="mb-1 text-truncate text-wrap text-capitalize">{{ $thread->title }}</h5>
-            <small class="text-muted">Dipost oleh <strong class="text-primary">{{ $thread->user->name }}</strong> {{ $thread->created_at->locale('id')->diffForHumans() }}</small>
+            <small class="text-muted">Posted by <strong class="text-primary">{{ $thread->user->name }}</strong> {{ $thread->created_at->locale('en')->diffForHumans() }}</small>
           </div>
           <div class="d-flex">
             <div class="dropdown">
               <div class="d-flex align-items-center d-lg-block d-none cursor-pointer me-1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class='bx bxs-heart text-danger fs-5 bx-sm mx-1' style="margin-bottom: 2px;"></i>{{ $thread->like->count() }} Suka
+                <i class='bx bxs-heart text-danger fs-5 bx-sm mx-1' style="margin-bottom: 2px;"></i>{{ $thread->like->count() }} Likes
               </div>
               <div class="dropdown-menu dropdown-menu">
                 @foreach($thread->like->load('thread','user') as $userLikes)
@@ -113,8 +113,8 @@
         <form class="mb-5" action="" method="post">
           @csrf
           <div>
-            <label for="comment" class="form-label required-label">Tambah Komentar</label>
-            <textarea class="form-control komentar mb-3 @error('comment') is-invalid @enderror" id="comment" name="comment" autocomplete="off" placeholder="Masukkan komentar anda di sini" rows="5" required>{{ old('comment') }}</textarea>
+            <label for="comment" class="form-label required-label">Add Comments</label>
+            <textarea class="form-control komentar mb-3 @error('comment') is-invalid @enderror" id="comment" name="comment" autocomplete="off" placeholder="Enter your comments here" rows="5" required>{{ old('comment') }}</textarea>
             @error('comment')
             <div class="invalid-feedback" style="margin-bottom: 5px; margin-top:-5px">
               {{ $message }}
@@ -122,12 +122,12 @@
             @enderror
           </div>
           <div>
-            <button type="submit" class="btn btn-label-primary btn-comment disabled"><i class='bx bx-paper-plane fs-6' style="margin-bottom: 3px;"></i>&nbsp;Kirim</button>
+            <button type="submit" class="btn btn-label-primary btn-comment disabled"><i class='bx bx-paper-plane fs-6' style="margin-bottom: 3px;"></i>&nbsp;Send</button>
           </div>
         </form>
-        <h5 class="mb-4" id="comments">({{ $thread->comment->count() }}) Komentar</h5>
+        <h5 class="mb-4" id="comments">({{ $thread->comment->count() }}) Comments</h5>
         @if($comments->isEmpty())
-        <span class="d-flex justify-content-lg-start justify-content-center mb-2"><i class='bx bx-info-circle fs-5' style="margin-top: 3px;"></i>&nbsp;Belum ada komentar!</span>
+        <span class="d-flex justify-content-lg-start justify-content-center mb-2"><i class='bx bx-info-circle fs-5' style="margin-top: 3px;"></i>&nbsp;No comments yet!</span>
         @endif
         @foreach($comments as $comment)
         <div>
@@ -137,14 +137,14 @@
             </div>
             <div class="d-flex flex-column">
               <span class="fw-bold">{{ $comment->user->name }}@if($comment->user->is_admin) <i class='bx bxs-badge-check text-primary' style="margin-bottom: 1px; font-size:13px" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Administrator"></i> @endif</span>
-              <small class="text-muted">{{ $comment->created_at->locale('id')->diffForHumans() }}</small>
+              <small class="text-muted">{{ $comment->created_at->locale('en')->diffForHumans() }}</small>
             </div>
           </div>
           <p style="margin-left: 2.5rem;">{{ $comment->comment }}</p>
           <div class="d-flex cursor-pointer" style="margin-left: 2.5rem; font-size:14px;">
-            <div class="me-2 text-primary fw-bold toggle-reply-form" data-target=".comment-reply-{{ $comment->id }}"><i class='bx bx-share fs-6 bx-sm mx-1'></i>Balas</div>
+            <div class="me-2 text-primary fw-bold toggle-reply-form" data-target=".comment-reply-{{ $comment->id }}"><i class='bx bx-share fs-6 bx-sm mx-1'></i>Reply</div>
             @if($comment->user->id == auth()->user()->id)
-            <div class="text-danger fw-bold button-delete-comment" data-message-comment="{{ $comment->comment }}" data-id-comment="{{ $comment->id }}"><i class='bx bx-trash fs-6 bx-sm mx-1'></i>Hapus</div>
+            <div class="text-danger fw-bold button-delete-comment" data-message-comment="{{ $comment->comment }}" data-id-comment="{{ $comment->id }}"><i class='bx bx-trash fs-6 bx-sm mx-1'></i>Delete</div>
             @endif
           </div>
 
@@ -153,8 +153,8 @@
               @csrf
               <input type="hidden" value="{{ $comment->id }}" name="parent_id">
               <div>
-                <label for="comment-{{ $comment->id }}" class="form-label required-label">Balas Komentar</label>
-                <textarea class="form-control komentar mb-3 @error('comment') is-invalid @enderror" id="comment-{{ $comment->id }}" name="comment" autocomplete="off" placeholder="Masukkan balasan komentar anda di sini" rows="5" required>{{ old('comment') }}</textarea>
+                <label for="comment-{{ $comment->id }}" class="form-label required-label">Reply Comments</label>
+                <textarea class="form-control komentar mb-3 @error('comment') is-invalid @enderror" id="comment-{{ $comment->id }}" name="comment" autocomplete="off" placeholder="Enter your comment reply here" rows="5" required>{{ old('comment') }}</textarea>
                 @error('comment')
                 <div class="invalid-feedback" style="margin-bottom: 5px; margin-top:-5px">
                   {{ $message }}
@@ -162,8 +162,8 @@
                 @enderror
               </div>
               <div class="divBtn" style="cursor: not-allowed;">
-                <button type="submit" class="btn btn-label-primary btn-comment disabled me-1"><i class='bx bx-paper-plane fs-6' style="margin-bottom: 3px;"></i>&nbsp;Kirim</button>
-                <button type="button" class="btn btn-outline-secondary batal-reply-button" data-cancel-comment="{{ $comment->id }}"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Batal</button>
+                <button type="submit" class="btn btn-label-primary btn-comment disabled me-1"><i class='bx bx-paper-plane fs-6' style="margin-bottom: 3px;"></i>&nbsp;Send</button>
+                <button type="button" class="btn btn-outline-secondary batal-reply-button" data-cancel-comment="{{ $comment->id }}"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Cancel</button>
               </div>
             </form>
           </div>
@@ -178,14 +178,14 @@
             </div>
             <div class="d-flex flex-column">
               <span class="fw-bold">{{ $reply->user->name }}@if($reply->user->is_admin) <i class='bx bxs-badge-check text-primary' style="margin-bottom: 1px; font-size:13px" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Administrator"></i> @endif</span>
-              <small class="text-muted">{{ $reply->created_at->locale('id')->diffForHumans() }}</small>
+              <small class="text-muted">{{ $reply->created_at->locale('en')->diffForHumans() }}</small>
             </div>
           </div>
           <p style="margin-left: 2.5rem;">{{ $reply->comment }}</p>
           <div class="d-flex cursor-pointer" style="margin-left: 2.5rem; font-size:14px;">
-            <div class="me-2 text-primary fw-bold toggle-reply-form" data-target=".comment-reply-{{ $reply->id }}"><i class='bx bx-share fs-6 bx-sm mx-1'></i>Balas</div>
+            <div class="me-2 text-primary fw-bold toggle-reply-form" data-target=".comment-reply-{{ $reply->id }}"><i class='bx bx-share fs-6 bx-sm mx-1'></i>Reply</div>
             @if($reply->user->id == auth()->user()->id)
-            <div class="text-danger fw-bold button-delete-comment" data-message-comment="{{ $reply->comment }}" data-id-comment="{{ $reply->id }}"><i class='bx bx-trash fs-6 bx-sm mx-1'></i>Hapus</div>
+            <div class="text-danger fw-bold button-delete-comment" data-message-comment="{{ $reply->comment }}" data-id-comment="{{ $reply->id }}"><i class='bx bx-trash fs-6 bx-sm mx-1'></i>Delete</div>
             @endif
           </div>
 
@@ -194,8 +194,8 @@
               @csrf
               <input type="hidden" value="{{ $comment->id }}" name="parent_id">
               <div>
-                <label for="comment-{{ $reply->id }}" class="form-label required-label">Balas Komentar</label>
-                <textarea class="form-control komentar mb-3 @error('comment') is-invalid @enderror" id="comment-{{ $reply->id }}" name="comment" autocomplete="off" placeholder="Masukkan balasan komentar anda di sini" rows="5" required>{{ old('comment') }}</textarea>
+                <label for="comment-{{ $reply->id }}" class="form-label required-label">Reply Comments</label>
+                <textarea class="form-control komentar mb-3 @error('comment') is-invalid @enderror" id="comment-{{ $reply->id }}" name="comment" autocomplete="off" placeholder="Enter your comment reply here" rows="5" required>{{ old('comment') }}</textarea>
                 @error('comment')
                 <div class="invalid-feedback" style="margin-bottom: 5px; margin-top:-5px">
                   {{ $message }}
@@ -203,8 +203,8 @@
                 @enderror
               </div>
               <div class="divBtn" style="cursor: not-allowed;">
-                <button type="submit" class="btn btn-label-primary btn-comment disabled me-1"><i class='bx bx-paper-plane fs-6' style="margin-bottom: 3px;"></i>&nbsp;Kirim</button>
-                <button type="button" class="btn btn-outline-secondary batal-reply-button" data-cancel-comment="{{ $reply->id }}"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Batal</button>
+                <button type="submit" class="btn btn-label-primary btn-comment disabled me-1"><i class='bx bx-paper-plane fs-6' style="margin-bottom: 3px;"></i>&nbsp;Send</button>
+                <button type="button" class="btn btn-outline-secondary batal-reply-button" data-cancel-comment="{{ $reply->id }}"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Cancel</button>
               </div>
             </form>
           </div>
@@ -220,7 +220,7 @@
             <div class="accordion-header">
               <button type="button" class="accordion-button bg-primary rounded-custom" data-bs-toggle="collapse" data-bs-target="#topic" aria-expanded="true">
                 <span class="d-flex flex-column">
-                  <span class="h5 mb-1 text-white ">Topik Terbaru</span>
+                  <span class="h5 mb-1 text-white ">Newest Topic</span>
                 </span>
               </button>
             </div>
@@ -231,7 +231,7 @@
                 @if($newsthread->id != $thread->id && $i <= 5) <div class=" d-flex align-items-center mb-3" onclick="window.location.href='/view/discuss/thread/{{$newsthread->id}}'">
                   <label class="form-check-label cursor-pointer">
                     <span class="mb-0 h6"> {{ $i++ }}. {{ $newsthread->title }} </span>
-                    <small class="text-muted d-block">Dipost oleh <strong class="text-primary">{{ $newsthread->user->name }}</strong> {{ $newsthread->created_at->locale('id')->diffForHumans() }}</small>
+                    <small class="text-muted d-block">Posted by <strong class="text-primary">{{ $newsthread->user->name }}</strong> {{ $newsthread->created_at->locale('en')->diffForHumans() }}</small>
                   </label>
               </div>
               @endif
@@ -252,15 +252,15 @@
       @csrf
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-between">
-          <h5 class="modal-title text-primary fw-bold">Konfirmasi&nbsp;<i class='bx bx-check-shield fs-5' style="margin-bottom: 3px;"></i></h5>
-          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+          <h5 class="modal-title text-primary fw-bold">Confirmation&nbsp;<i class='bx bx-check-shield fs-5' style="margin-bottom: 3px;"></i></h5>
+          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i></button>
         </div>
         <div class="modal-body" style="margin-top: -10px;">
           <div class="col-sm fs-6 commentMessagesDelete"></div>
         </div>
         <div class="modal-footer" style="margin-top: -5px;">
-          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Tidak</button>
-          <button type="submit" class="btn btn-primary"><i class='bx bx-trash fs-6' style="margin-bottom: 3px;"></i>&nbsp;Ya, Hapus!</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;No</button>
+          <button type="submit" class="btn btn-primary"><i class='bx bx-trash fs-6' style="margin-bottom: 3px;"></i>&nbsp;Yes, Delete!</button>
         </div>
       </div>
     </form>

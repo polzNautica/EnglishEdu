@@ -18,7 +18,7 @@ class AdminPenggunaController extends Controller
     {
         return view('admin.pengguna.index', [
             'app' => Application::all(),
-            'title' => 'Data Pengguna',
+            'title' => 'Users Data',
             'users' => User::latest()->where('is_admin', false)->paginate(10)
         ]);
     }
@@ -30,7 +30,7 @@ class AdminPenggunaController extends Controller
             'name' => 'required|string|max:100',
             'email' => 'required|email:dns|unique:users',
             'image' => 'image|file|max:500|dimensions:ratio=1/1',
-            'gender' => 'required|in:Laki-Laki,Perempuan',
+            'gender' => 'required|in:Male,Female',
             'password' => ['required', 'max:255', Password::min(8)->mixedCase()->letters()->numbers()->symbols()]
         ], [
             'image.dimensions' => 'The :attribute must have a 1:1 aspect ratio.',
@@ -39,7 +39,7 @@ class AdminPenggunaController extends Controller
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('profil-images');
         } else {
-            if ($request->gender == 'Perempuan') {
+            if ($request->gender == 'Female') {
                 $validatedData['image'] = 'profil-images/girl.jpeg';
             } else {
                 $validatedData['image'] = 'profil-images/man.jpeg';
@@ -49,7 +49,7 @@ class AdminPenggunaController extends Controller
         $validatedData['password'] = bcrypt($validatedData['password']);
         User::create($validatedData);
 
-        return back()->with('adduserSuccess', 'Pengguna berhasil ditambah!');
+        return back()->with('adduserSuccess', 'User added successfully!');
     }
 
 
@@ -63,7 +63,7 @@ class AdminPenggunaController extends Controller
             $rules = [
                 'name' => 'required|string|max:100',
                 'image' => 'image|file|max:500|dimensions:ratio=1/1',
-                'gender' => 'required|in:Laki-Laki,Perempuan',
+                'gender' => 'required|in:Male,Female',
             ];
 
             if ($request->username != $data->username) {
@@ -92,7 +92,7 @@ class AdminPenggunaController extends Controller
 
             User::where('id', $id_user)->update($validatedData);
 
-            return back()->with('updateUserSuccess', 'Pengguna berhasil diupdate!');
+            return back()->with('updateUserSuccess', 'User updated successfully!');
         } catch (\Illuminate\Validation\ValidationException $e) {
             $errors = $e->validator->errors()->toArray();
             session()->flash('validationErrors', $errors);
@@ -100,7 +100,7 @@ class AdminPenggunaController extends Controller
         }
     }
 
-    // ajax edit pengguna
+    // ajax Edit User
     public function getuser(Request $request)
     {
         $id = decrypt($request->id);
@@ -128,7 +128,7 @@ class AdminPenggunaController extends Controller
 
         return view('admin.pengguna.search', [
             'app' => Application::all(),
-            'title' => 'Data Pengguna',
+            'title' => 'Users Data',
             'users' => User::latest()->where('is_admin', false)->searching(request('q'))->paginate(10)
         ]);
     }

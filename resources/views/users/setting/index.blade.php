@@ -18,13 +18,13 @@
           <button type="button" class="nav-link @unless ($errors->has('passwordLama') || $errors->has('passwordBaru') || session()->has('passwordLamaSalah')) active @endunless" role="tab" data-bs-toggle="tab" data-bs-target="#navs-profil" aria-controls="navs-profil"><i class="tf-icons bx bxs-user fs-6 me-1" style="margin-bottom: 2px;"></i>&nbsp;Profil</button>
         </li>
         <li class="nav-item">
-          <button type="button" class="nav-link @if($errors->has('passwordLama') || $errors->has('passwordBaru') || session()->has('passwordLamaSalah')) active @endif" role="tab" data-bs-toggle="tab" data-bs-target="#navs-akun" aria-controls="navs-akun"><i class="tf-icons bx bxs-lock-alt fs-6 me-1" style="margin-bottom: 3px;"></i>&nbsp;Akun</button>
+          <button type="button" class="nav-link @if($errors->has('passwordLama') || $errors->has('passwordBaru') || session()->has('passwordLamaSalah')) active @endif" role="tab" data-bs-toggle="tab" data-bs-target="#navs-akun" aria-controls="navs-akun"><i class="tf-icons bx bxs-lock-alt fs-6 me-1" style="margin-bottom: 3px;"></i>&nbsp;Account</button>
         </li>
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade @unless ($errors->has('passwordLama') || $errors->has('passwordBaru') || session()->has('passwordLamaSalah')) show active @endunless" id="navs-profil" role="tabpanel">
-          <h5 class="card-header" style="margin-top: -0.5rem;">Profil Saya</h5>
-          <p style="padding-left: 1.5rem; margin-top:-1.3rem; margin-bottom:-5px;">Kelola informasi profil Anda untuk mengontrol, melindungi dan mengamankan akun
+          <h5 class="card-header" style="margin-top: -0.5rem;">My Profile</h5>
+          <p style="padding-left: 1.5rem; margin-top:-1.3rem; margin-bottom:-5px;">Manage your profile information to control, protect, and secure your account.
           </p>
           <!-- Profile  -->
           <div class="card-body">
@@ -37,14 +37,14 @@
                     <span><i class="bx bx-image-alt fs-6" style="margin-bottom: 2px;"></i>&nbsp;Upload</span>
                     <input type="file" name="image" id="upload" class="account-file-input" hidden />
                   </label>
-                  @error('image')<div style="color: #ff3e1d; font-size:80%;">{{ $message }}</div>@else<p class="text-muted mb-0" style="margin-top: -5px;">Ukuran maks 500 KB dengan rasio 1:1. Format: JPG, PNG, JPEG.</p>@enderror
+                  @error('image')<div style="color: #ff3e1d; font-size:80%;">{{ $message }}</div>@else<p class="text-muted mb-0" style="margin-top: -5px;">Maximum size 500 KB with a 1:1 ratio. Formats: JPG, PNG, JPEG.</p>@enderror
                 </div>
               </div>
           </div>
           <hr class="my-0">
           <div class="card-body">
             <div class="row mb-2 mb-lg-3">
-              <label class="col-sm-2 col-form-label" for="namaLengkap">Nama Lengkap</label>
+              <label class="col-sm-2 col-form-label" for="namaLengkap">Full Name</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control  @error('name') is-invalid @enderror" id="namaLengkap" name="name" autocomplete="off" placeholder="Enter your name" value="{{ old('name') ?? auth()->user()->name}}" />
                 @error('name') <div class="invalid-feedback" style="margin-bottom: -3px;">{{ $message }}</div> @enderror
@@ -64,35 +64,35 @@
               </div>
             </div>
             <div class="row mb-2 mb-lg-3">
-              <label class="col-sm-2 col-form-label" for="jenisKelamin">Jenis Kelamin</label>
+              <label class="col-sm-2 col-form-label" for="jenisKelamin">Gender</label>
               <div class="col-sm-10">
                 <div class="form-check form-check-inline" style="margin-top: 5px;">
-                  <input class="form-check-input" type="radio" name="gender" id="lakiLaki" value="Laki-Laki" @if(auth()->user()->gender == 'Laki-Laki') checked @endif />
-                  <label class="form-check-label" for="lakiLaki">Laki-Laki</label>
+                  <input class="form-check-input" type="radio" name="gender" id="lakiLaki" value="Male" @if(auth()->user()->gender == 'Male') checked @endif />
+                  <label class="form-check-label" for="lakiLaki">Male</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="gender" id="perempuan" value="Perempuan" @if(auth()->user()->gender == 'Perempuan') checked @endif />
-                  <label class="form-check-label" for="perempuan">Perempuan</label>
+                  <input class="form-check-input" type="radio" name="gender" id="perempuan" value="Female" @if(auth()->user()->gender == 'Female') checked @endif />
+                  <label class="form-check-label" for="perempuan">Female</label>
                 </div>
                 @error('gender') <div style="color: #ff3e1d; font-size:80%; margin-top:0.3rem;">{{ $message }}</div> @enderror
               </div>
             </div>
             <div class="row mb-2 mb-lg-3">
-              <label class="col-sm-2 col-form-label" for="tanggalLahir">Tanggal Lahir</label>
+              <label class="col-sm-2 col-form-label" for="tanggalLahir">Date of Birth</label>
               <div class="col-sm-10">
                 <input type="date" id="tanggalLahir" name="tanggal_lahir" class="form-control" @if(old('tanggal_lahir')) value="{{ date('Y-m-d', strtotime(old('tanggal_lahir'))) }}" @endif @if(auth()->user()->tanggal_lahir) value="{{ date('Y-m-d', strtotime(auth()->user()->tanggal_lahir)) }}" @endif />
               </div>
             </div>
             <div class="row mb-4">
-              <label class="col-sm-2 col-form-label" for="alamat">Alamat</label>
+              <label class="col-sm-2 col-form-label" for="alamat">Address</label>
               <div class="col-sm-10">
-                <textarea class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" autocomplete="off" placeholder="Masukkan alamat tempat tinggal Anda yang sekarang. (max 255 karakter)" rows="3">{{ auth()->user()->alamat ?? old('alamat') }}</textarea>
+                <textarea class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" autocomplete="off" placeholder="Enter your current residential address. (max 255 characters)" rows="3">{{ auth()->user()->alamat ?? old('alamat') }}</textarea>
                 @error('alamat') <div class="invalid-feedback" style="margin-bottom: -3px;">{{ $message }}</div> @enderror
               </div>
             </div>
             <div class="row justify-content-end">
               <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary"><i class="bx bx-save fs-6" style="margin-bottom: 2px;"></i>&nbsp;Simpan</button>
+                <button type="submit" class="btn btn-primary"><i class="bx bx-save fs-6" style="margin-bottom: 2px;"></i>&nbsp;Save</button>
               </div>
             </div>
             </form>
@@ -100,37 +100,37 @@
         </div>
 
         <div class="tab-pane fade @if($errors->has('passwordLama') || $errors->has('passwordBaru') || session()->has('passwordLamaSalah')) show active @endif" id="navs-akun" role="tabpanel">
-          <h5 class="card-header" style="margin-top: -0.5rem;">Ubah Password</h5>
-          <p style="padding-left: 1.5rem; margin-top:-1.3rem; margin-bottom:-5px;">Kelola informasi data Anda untuk mengontrol, melindungi dan mengamankan akun
+          <h5 class="card-header" style="margin-top: -0.5rem;">Change Password</h5>
+          <p style="padding-left: 1.5rem; margin-top:-1.3rem; margin-bottom:-5px;">Manage your data information to control, protect, and secure your account.
           </p>
           <!-- Akun  -->
           <form id="formAccount" action="/pengaturan/changepassword" method="POST">
             @csrf
             <div class="card-body">
               <div class="row mb-2 mb-lg-3">
-                <label class="col-sm-2 col-form-label required-label" for="passwordLama">Password Lama</label>
+                <label class="col-sm-2 col-form-label required-label" for="passwordLama">Old Password</label>
                 <div class="col-sm-10 col-md-4">
                   <input type="password" class="form-control  @error('passwordLama') is-invalid @enderror" id="passwordLama" name="passwordLama" autocomplete="off" />
                   @error('passwordLama') <div class="invalid-feedback" style="margin-bottom: -3px;">{{ $message }}</div> @enderror
                 </div>
               </div>
               <div class="row mb-2 mb-lg-3">
-                <label class="col-sm-2 col-form-label required-label" for="passwordBaru">Password Baru</label>
+                <label class="col-sm-2 col-form-label required-label" for="passwordBaru">New Password</label>
                 <div class="col-sm-10 col-md-4">
                   <input type="password" class="form-control  @error('passwordBaru') is-invalid @enderror" id="passwordBaru" name="passwordBaru" autocomplete="off" />
                   @error('passwordBaru')<div class="invalid-feedback" style="margin-bottom: -3px;">{{ $message }}</div>@enderror
-                  <div class="form-text  @error('passwordBaru') d-none @enderror"><i class='bx bx-error' style="font-size: 100%;"></i>&nbsp;Password minimal 8 karakter termasuk huruf kapital & kecil (A-Z), (a-z), angka (1-9), dan karakter unik (@,#,%,dll)</div>
+                  <div class="form-text  @error('passwordBaru') d-none @enderror"><i class='bx bx-error' style="font-size: 100%;"></i>&nbsp;Password must be at least 8 characters, including uppercase & lowercase letters (A-Z), (a-z), numbers (1-9), and special characters (@,#,%,etc).</div>
                 </div>
               </div>
               <div class="row mb-4">
-                <label class="col-sm-2 col-form-label required-label" for="ulangiPasswordBaru">Ulangi Password Baru</label>
+                <label class="col-sm-2 col-form-label required-label" for="ulangiPasswordBaru">Repeat New Password</label>
                 <div class="col-sm-10 col-md-4">
                   <input type="password" class="form-control" id="ulangiPasswordBaru" name="passwordBaru_confirmation" autocomplete="off" />
                 </div>
               </div>
               <div class="row justify-content-end">
                 <div class="col-sm-10">
-                  <button type="submit" class="btn btn-primary"><i class="bx bx-save fs-6" style="margin-bottom: 2px;"></i>&nbsp;Simpan</button>
+                  <button type="submit" class="btn btn-primary"><i class="bx bx-save fs-6" style="margin-bottom: 2px;"></i>&nbsp;Save</button>
                 </div>
               </div>
             </div>
@@ -148,14 +148,14 @@
       @csrf
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-between">
-          <h5 class="modal-title text-primary fw-bold">Verifikasi&nbsp;<i class='bx bxs-user fs-5' style="margin-bottom: 1px;"></i></h5>
-          <button type="button" class="btn p-0 dropdown-toggle hide-arrow btnCancelVeify" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+          <h5 class="modal-title text-primary fw-bold">Verification&nbsp;<i class='bx bxs-user fs-5' style="margin-bottom: 1px;"></i></h5>
+          <button type="button" class="btn p-0 dropdown-toggle hide-arrow btnCancelVeify" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i></button>
         </div>
         <div class="modal-body">
           <div class="row">
             <div class="col mb-3">
               <label for="usernameVerivy" class="form-label required-label">Username</label>
-              <input type="text" id="usernameVerivy" name="usernameverify" value="{{ old('usernameverify') ?? auth()->user()->username }}" class="form-control @error('usernameverify') is-invalid @enderror" placeholder="Masukkan username Anda" autocomplete="off" readonly required>
+              <input type="text" id="usernameVerivy" name="usernameverify" value="{{ old('usernameverify') ?? auth()->user()->username }}" class="form-control @error('usernameverify') is-invalid @enderror" placeholder="Enter your username" autocomplete="off" readonly required>
               @error('username')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -166,21 +166,21 @@
           <div class="row">
             <div class="col">
               <label for="passwordVerify" class="form-label required-label">Password</label>
-              <input type="password" id="passwordVerify" name="password" value="{{ old('password') }}" class="form-control @error('password') is-invalid @enderror @if(session()->has('statusverifyfailed')) is-invalid @endif" placeholder="Masukkan pasword Anda" autocomplete="off" required>
+              <input type="password" id="passwordVerify" name="password" value="{{ old('password') }}" class="form-control @error('password') is-invalid @enderror @if(session()->has('statusverifyfailed')) is-invalid @endif" placeholder="Enter your password" autocomplete="off" required>
               @error('password')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
               </div>
               @enderror
               @if(session()->has('statusverifyfailed'))
-              <div class="invalid-feedback" style="margin-bottom: -3px;">Password anda salah!</div>
+              <div class="invalid-feedback" style="margin-bottom: -3px;">Wrong Password!</div>
               @endif
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-danger btnCancelVeify" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Batal</button>
-          <button type="submit" class="btn btn-primary"><i class='bx bxs-user fs-6' style="margin-bottom: 3px;"></i>&nbsp;Konfirmasi</button>
+          <button type="button" class="btn btn-outline-danger btnCancelVeify" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class='bx bxs-user fs-6' style="margin-bottom: 3px;"></i>&nbsp;Confirmation</button>
         </div>
       </div>
     </form>
@@ -198,14 +198,14 @@
       @csrf
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-between">
-          <h5 class="modal-title text-primary fw-bold">Ubah Email&nbsp;<i class='bx bx-envelope fs-5' style="margin-bottom: 1px;"></i></h5>
-          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+          <h5 class="modal-title text-primary fw-bold">Change Email&nbsp;<i class='bx bx-envelope fs-5' style="margin-bottom: 1px;"></i></h5>
+          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i></button>
         </div>
         <div class="modal-body">
           <div class="row">
             <div class="col">
-              <label for="emailSet" class="form-label required-label">Email Baru</label>
-              <input type="text" id="emailSet" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan email baru" autocomplete="off" required>
+              <label for="emailSet" class="form-label required-label">New Email</label>
+              <input type="text" id="emailSet" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="Enter your new email" autocomplete="off" required>
               @error('email')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
                 {{ $message }}
@@ -215,8 +215,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Batal</button>
-          <button type="submit" class="btn btn-primary"><i class='bx bx-save fs-6' style="margin-bottom: 3px;"></i>&nbsp;Simpan</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class='bx bx-share fs-6' style="margin-bottom: 3px;"></i>&nbsp;Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class='bx bx-save fs-6' style="margin-bottom: 3px;"></i>&nbsp;Save</button>
         </div>
       </div>
     </form>
@@ -230,7 +230,7 @@
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-between">
         <h5 class="modal-title text-primary fw-bold nameShowProfilImg">My Profile Picture</h5>
-        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tutup"></i></button>
+        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-dismiss="modal"><i class="bx bx-x-circle text-danger fs-4" data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Close"></i></button>
       </div>
       <div class="modal-body" style="margin-top: -10px;">
         <img src="" class="img-fluid rounded urlShowProfilImg" width="100%">

@@ -104,3 +104,127 @@
 .card .card-hover-border-primary:hover {
     border-color: #c6c7ff;
 }
+
+
+@keyframes sf-fly-by-1 {
+    0% {
+        transform: translateZ(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateZ(600px);
+        opacity: 0;
+    }
+}
+
+@keyframes sf-fly-by-2 {
+    0% {
+        transform: translateZ(-600px);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateZ(600px);
+        opacity: 0;
+    }
+}
+
+@keyframes sf-fly-by-3 {
+    0% {
+        transform: translateZ(-1200px);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateZ(600px);
+        opacity: 0;
+    }
+}
+
+.star-field {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    perspective: 600px;
+    -webkit-perspective: 600px;
+    z-index: -1;
+}
+.star-field .layer {
+    box-shadow: 
+        -411px -476px #4b0082, 777px -407px #5d0099, -387px -477px #3a0066, 
+        -91px -235px #5d0099, 491px -460px #4e0088, 892px -128px #4e0088, 
+        758px -277px #540091, 596px 378px #4b0082, 647px 423px #3d006a, 
+        183px 389px #52008d, 524px -237px #47007d, 679px -535px #440077, 
+        158px 399px #540091, 157px 249px #540091, 81px -450px #560095, 
+        719px -360px #450079, -499px 473px #53008f, -158px -349px #5d0099, 
+        870px -134px #4f0089, 446px 404px #450079, 440px 490px #5d0099, 
+        414px 507px #58009a, -12px 246px #3a0066, -384px 369px #440077, 
+        641px -413px #3a0066, 822px 516px #4c0084, 449px 132px #450079, 
+        727px 146px #4e0088, -315px -488px #58009a, 952px -70px #440077,
+        -869px -29px #4c0084, 502px 80px #4a0080, 764px 342px #4d0086, 
+        -150px -380px #4c0084, 654px -426px #440077, -325px -263px #450079, 
+        755px -447px #52008d, 729px -177px #450079, -682px -391px #58009a, 
+        554px -176px #540091, -85px -428px #4e0087, 714px 55px #53008f, 
+        359px -285px #4f0089, -362px -508px #4a0080, 468px -265px #3a0066, 
+        74px -500px #52008d, -514px 383px #4c0084, 730px -92px #4f0089, 
+        -112px 287px #49007e, -853px 79px #4b0081, 828px 475px #4b0081, 
+        -681px 13px #370063, -176px 209px #47007d, 758px 457px #370063, 
+        -383px -454px #540091, 813px 179px #4b0083, 608px 98px #3d006a, 
+        -860px -65px #420074, -572px 272px #4e0088, 459px 533px #3a0066,
+        624px -481px #58009a, 790px 477px #4a0080, 731px -403px #540091, 
+        70px -534px #4b0082, -23px 510px #4f0089, -652px -237px #3d006a, 
+        -690px 367px #4b0083, 810px 536px #4b0083, 774px 293px #49007e, 
+        -362px 97px #450079, 563px 47px #4a0080, 313px 475px #4d0086, 
+        839px -491px #440077, -217px 377px #5d0099, -581px 239px #450079, 
+        -857px 72px #4b0082, -23px 340px #4a0080, -837px 246px #2a004a, 
+        170px -502px #4f0089, 822px -443px #4d0086, 795px 497px #4d0086,
+        -814px -337px #4f0089, 206px -339px #48007b, -779px 108px #58009a, 
+        808px 2px #5d0099, 665px 41px #5d0099, -564px 64px #4b0082, 
+        -380px 74px #4f0089, -369px -60px #4e0088, 47px -495px #440077, 
+        -383px 368px #4e0088, 419px 288px #4b0083, -598px -50px #450079, 
+        -833px 187px #420074, 378px 325px #3d006a, -703px 375px #4b0081, 
+        392px 520px #4e0087, -492px -60px #420074, 759px 288px #560095, 
+        98px -412px #420074, -911px -277px #49007e;
+    transform-style: preserve-3d;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 4px;
+    width: 4px;
+    border-radius: 2px;
+    animation: twinkle 5s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+.star-field .layer:nth-child(1) {
+    animation: sf-fly-by-1 6s linear infinite;
+}
+.star-field .layer:nth-child(2) {
+    animation: sf-fly-by-2 7s linear infinite;
+}
+.star-field .layer:nth-child(3) {
+    animation: sf-fly-by-3 8s linear infinite;
+}
+

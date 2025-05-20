@@ -22,8 +22,8 @@ BubbleSmart adalah aplikasi belajar online Aksara Jawa dengan mudah dan menyenan
 - Dashboard
   Di dalam 'Dashboard', admin bisa melihat statistik pengguna yang mengerjakan quiz, total pengguna, total quiz, dan thread forum.
 
-- Data Materi
-  Dalam menu 'Data Materi', admin dapat melakukan insert data materi, update data materi, dan juga delete data materi. Selain itu, terdapat juga fitur searching untuk melakukan filer saat mencari data materi. Data materi berisi gambar, judul, kategori, dan juga audio.
+- Lessons Data
+  Dalam menu 'Lessons Data', admin dapat melakukan insert Lessons Data, update Lessons Data, dan juga delete Lessons Data. Selain itu, terdapat juga fitur searching untuk melakukan filer saat menSearch Lessons Data. Lessons Data berisi gambar, judul, Category, dan juga audio.
 
 - Data Quiz
   Di dalam menu 'Data Quiz', admin dapat melakukan insert data quiz, update data quiz, delete data quiz, lihat pertanyaan, tambah pertannyaan, update pertannyaan, dan juga delete pertanyaan. Terdapat juga fitur pencarian data quiz dan juga data pertannyan.

@@ -36,7 +36,7 @@
               </a>
             </div>
             <h4 class="mb-2">Welcome Back!</h4>
-            <p class="mb-3">Silahkan login dan mulai belajar.</p>
+            <p class="mb-3">Please login and start learning.</p>
             <div class="flash-message" data-flash-message="@if(session()->has('loginError')) {{ session('loginError') }} @endif"></div>
             <div class="flash-message-register" data-flash-message="@if(session()->has('registerBerhasil')) {{ session('registerBerhasil') }} @endif"></div>
             <form id="formAuthentication" class="mb-3" action="/login" method="POST">
@@ -64,7 +64,7 @@
               </div>
             </form>
             <p class="text-center">
-              <span>Belum punya akun?</span>
+              <span>Doesn't have an account?</span>
               <a href="/register">
                 <span>Sign Up</span>
               </a>

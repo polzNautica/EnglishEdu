@@ -55,6 +55,10 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 // materi users
 Route::get('/materi', [MateriController::class, 'show'])->middleware('member');
+Route::get('/materi/lesson/{id}', [MateriController::class, 'showlesson'])->name('lesson.show')->middleware('member');
+Route::get('/materi/test', [MateriController::class, 'testlesson'])->name('test.show')->middleware('member');
+Route::get('/materi/test2', [MateriController::class, 'testlesson2'])->name('test2.show')->middleware('member');
+
 
 // quiz users
 Route::get('/quiz', [QuizController::class, 'index'])->middleware('member');
@@ -112,6 +116,7 @@ Route::get('/admin/dashboard',  [AdminDashboardController::class, 'index'])->mid
 Route::get('/admin/data-materi', [MateriController::class, 'index'])->middleware('admin');
 Route::post('/admin/data-materi', [MateriController::class, 'store'])->middleware('admin');
 Route::post('/admin/data-materi/update', [MateriController::class, 'update'])->middleware('admin');
+Route::post('/upload-quill-image', [MateriController::class, 'uploadImage'])->name('quill.upload');
 Route::get('/admin/data-materi/update', function () {
   return back();
 })->middleware('admin');

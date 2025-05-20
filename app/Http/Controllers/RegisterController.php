@@ -30,12 +30,12 @@ class RegisterController extends Controller
             'username' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:5|max:50|unique:users',
             'name' => 'required|string|max:100',
             'email' => 'required|email:dns|unique:users',
-            'gender' => 'required|in:Laki-Laki,Perempuan',
+            'gender' => 'required|in:Male,Female',
             'password' => ['required', 'max:255', Password::min(8)->mixedCase()->letters()->numbers()->symbols(), 'confirmed'],
             'terms' => 'required'
         ]);
 
-        if ($request->gender == 'Perempuan') {
+        if ($request->gender == 'Female') {
             $validatedData['image'] = 'profil-images/girl.jpeg';
         } else {
             $validatedData['image'] = 'profil-images/man.jpeg';

@@ -15,7 +15,7 @@ class AdminPengaturanController extends Controller
   {
     return view('admin.setting.index', [
       'app' => Application::all(),
-      'title' => 'Pengaturan'
+      'title' => 'Settings'
     ]);
   }
 
@@ -47,7 +47,7 @@ class AdminPengaturanController extends Controller
     ]);
     User::where('id', auth()->user()->id)
       ->update($validatedData);
-    return redirect('/admin/pengaturan')->with('updateEmailUser', 'Email berhasil diupdate!');
+    return redirect('/admin/pengaturan')->with('updateEmailUser', 'Email updated successfully!');
   }
 
   public function store(Request $request)
@@ -55,7 +55,7 @@ class AdminPengaturanController extends Controller
     $rules = [
       'name' => 'required|string|max:100',
       'alamat' => 'Max:255',
-      'gender' => 'in:Laki-Laki,Perempuan',
+      'gender' => 'in:Male,Female',
       'tanggal_lahir' => '',
       'image' => 'image|file|max:500|dimensions:ratio=1/1'
     ];
@@ -72,7 +72,7 @@ class AdminPengaturanController extends Controller
       $validatedData['image'] = $request->file('image')->store('profil-images');
     }
     User::where('id', auth()->user()->id)->update($validatedData);
-    return redirect('/admin/pengaturan')->with('updateUserBerhasil', 'Data admin berhasil diupdate!');
+    return redirect('/admin/pengaturan')->with('updateUserBerhasil', 'Admin data updated successfully!');
   }
 
   public function changepassword(Request $request)
@@ -86,10 +86,10 @@ class AdminPengaturanController extends Controller
       $hashPassword = bcrypt($validatedData['passwordBaru']);
       User::where('id', auth()->user()->id)
         ->update(['password' => $hashPassword]);
-      return redirect('/admin/pengaturan')->with('passwordUpdateSuccess', 'Password berhasil diupdate!');
+      return redirect('/admin/pengaturan')->with('passwordUpdateSuccess', 'Your password updated successfully!');
       exit;
     } else {
-      return redirect('/admin/pengaturan')->with('passwordLamaSalah', 'Password lama Anda salah!');
+      return redirect('/admin/pengaturan')->with('passwordLamaSalah', 'Your old password is Wrong!');
     }
   }
 
@@ -109,6 +109,6 @@ class AdminPengaturanController extends Controller
       $validatedData['logo'] = $request->file('logo')->store('logo-aplikasi');
     }
     Application::where('id', 1)->update($validatedData);
-    return redirect('/admin/pengaturan')->with('updateAppBerhasil', 'Data app berhasil diupdate!');
+    return redirect('/admin/pengaturan')->with('updateAppBerhasil', 'App Data updated successfully!');
   }
 }

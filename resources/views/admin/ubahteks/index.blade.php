@@ -8,7 +8,7 @@
           <div class="d-lg-flex justify-content-between">
             <div class="col mb-4 mb-lg-0">
               <div class="d-flex">
-                <label for="textBiasa" class="form-label fw-bold">Masukkan Teks Biasa</label>
+                <label for="textBiasa" class="form-label fw-bold">Enter normal texts</label>
               </div>
               <textarea class="form-control fs-5" style="height: 250px;" id="textBiasa" rows="6"></textarea>
             </div>

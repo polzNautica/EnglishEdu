@@ -16,7 +16,7 @@ class AdminLaporanController extends Controller
     {
         return view('admin.laporan.index', [
             'app' => Application::all(),
-            'title' => 'Laporan Data Akses Quiz',
+            'title' => 'Quiz Access Data Report',
             'reports' => Quiz::with(['result'])->latest()->paginate(10)
         ]);
     }
@@ -33,7 +33,7 @@ class AdminLaporanController extends Controller
 
         return view('admin.laporan.access', [
             'app' => Application::all(),
-            'title' => 'Laporan Data Akses Quiz',
+            'title' => 'Quiz Access Data Report',
             'dataquiz' => $quiz,
             'reports' => $query->where('quiz_id', $quiz->id)->with(['user', 'answer_user', 'quiz'])->latest()->paginate(10)
         ]);
@@ -63,7 +63,7 @@ class AdminLaporanController extends Controller
 
         return view('admin.laporan.search_access', [
             'app' => Application::all(),
-            'title' => 'Laporan Data Akses Quiz',
+            'title' => 'Quiz Access Data Report',
             'dataquiz' => $quiz,
             'reports' => Result::where('quiz_id', $quiz->id)->with(['user', 'answer_user', 'quiz'])->latest()->searchingAccess(request('q'))->paginate(10)
         ]);

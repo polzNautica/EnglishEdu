@@ -40,7 +40,7 @@ class AdminDataQuizController extends Controller
 
 
         Quiz::create($validated);
-        return redirect('/admin/data-quiz')->with('quizSuccess', 'Quiz berhasil ditambahkan!');
+        return redirect('/admin/data-quiz')->with('quizSuccess', 'Quiz added successfully!');
     }
 
     /**
@@ -50,7 +50,7 @@ class AdminDataQuizController extends Controller
     {
         return view('admin.dataquiz.show', [
             'app' => Application::all(),
-            'title' => 'Soal & Jawaban Quiz',
+            'title' => 'Questions and Answers Quiz',
             'code' =>  $quiz->slug,
             'titleQuiz' => $quiz->title,
             'questions' => $quiz->question()->with(['answer', 'quiz'])->latest()->paginate(10)
@@ -113,10 +113,10 @@ class AdminDataQuizController extends Controller
                 ]);
             }
             DB::commit();
-            return redirect('/admin/data-quiz/q&a/' . $quiz->slug)->with('questionSuccess', 'Soal berhasil ditambahkan!');
+            return redirect('/admin/data-quiz/q&a/' . $quiz->slug)->with('questionSuccess', 'Soal added successfully!');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect('/admin/data-quiz/q&a/' . $quiz->slug)->with('questionFailed', 'Upss..Terjadi kesalahan!');
+            return redirect('/admin/data-quiz/q&a/' . $quiz->slug)->with('questionFailed', 'Upss..An error occurred!');
         }
     }
 
@@ -143,7 +143,7 @@ class AdminDataQuizController extends Controller
 
         Quiz::where('slug', $request->codeQuiz)
             ->update($validated);
-        return back()->with('updateQuizSuccess', 'Quiz berhasil diupdate!');
+        return back()->with('updateQuizSuccess', 'Quiz updated successfully!');
     }
 
 
@@ -159,7 +159,7 @@ class AdminDataQuizController extends Controller
             'editOption.4' => 'Required|max:255',
             'editCorrectAnswer' => 'Required|in:1,2,3,4'
         ], [
-            'editCorrectAnswer.required' => 'The jawaban benar field is required.',
+            'editCorrectAnswer.required' => 'The Correct Answer field is required.',
             'editQuestion.required' => 'The pertanyaan field is required.',
             'editScore.required' => 'The score field is required.',
             'editScore.min' => 'The score field must be at least 1.',
@@ -215,10 +215,10 @@ class AdminDataQuizController extends Controller
                 ]);
             }
             DB::commit();
-            return back()->with('updateQuestionSuccess', 'Soal berhasil diupdate!');
+            return back()->with('updateQuestionSuccess', 'Questions updated successfully!');
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->with('editQuestionFailed', 'Upss..Terjadi kesalahan!');
+            return back()->with('editQuestionFailed', 'Upss..An error occurred!');
         }
     }
 

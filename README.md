@@ -11,8 +11,8 @@
 -   <b>Dashboard</b><br>
     Di dalam 'Dashboard', admin bisa melihat statistik pengguna yang mengerjakan quiz, total pengguna, total quiz, dan thread forum.
 
--   <b>Data Materi</b><br>
-    Dalam menu 'Data Materi', admin dapat melakukan insert data materi, update data materi, dan juga delete data materi. Selain itu, terdapat juga fitur searching untuk melakukan filter saat mencari data materi. Data materi berisi gambar, judul, kategori, dan juga audio.
+-   <b>Lessons Data</b><br>
+    Dalam menu 'Lessons Data', admin dapat melakukan insert Lessons Data, update Lessons Data, dan juga delete Lessons Data. Selain itu, terdapat juga fitur searching untuk melakukan filter saat menSearch Lessons Data. Lessons Data berisi gambar, judul, Category, dan juga audio.
 
 -   <b>Data Quiz</b><br>
     Di dalam menu 'Data Quiz', admin dapat melakukan insert data quiz, update data quiz, delete data quiz, lihat pertanyaan, tambah pertanyaan, update pertanyaan, dan juga delete pertanyaan. Terdapat juga fitur pencarian data quiz dan juga data pertanyaan.

@@ -22,7 +22,7 @@ class NilaiQuizController extends Controller
         }
         return view('users.nilai.index', [
             'app' => Application::all(),
-            'title' => 'Nilai Quiz',
+            'title' => 'Scores',
             'histories' => $query->where('user_id', auth()->user()->id)->latest()->paginate(10)
         ]);
     }
@@ -35,7 +35,7 @@ class NilaiQuizController extends Controller
         }
         return view('users.nilai.search', [
             'app' => Application::all(),
-            'title' => 'Nilai Quiz',
+            'title' => 'Scores',
             'histories' => Result::with(['quiz', 'answer_user'])->where('user_id', auth()->user()->id)->latest()->searching(request('q'))->paginate(10)
         ]);
     }

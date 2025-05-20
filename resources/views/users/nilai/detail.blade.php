@@ -34,7 +34,7 @@
 <nav aria-label="breadcrumb" class="navbreadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="/nilai" class="text-primary">Nilai</a>
+      <a href="/nilai" class="text-primary">Scores</a>
     </li>
     <li class="breadcrumb-item active">Details</li>
     <li class="breadcrumb-item active">{{ $titleQuiz }}</li>
@@ -43,19 +43,19 @@
 <div class="card">
   <div class="card-body">
     <div class="d-flex justify-content-between mb-3">
-      <button type="button" onclick="window.location.href='/nilai'" class="btn btn-primary btn-sm"><i class='bx bx-left-arrow-alt bx-xs' style="margin-bottom: 3px;"></i>&nbsp;Kembali</button>
-      <div style="margin-top: 3px;"><i class='bx bx-history bx-spin text-primary mb-1' data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Tanggal Sumbit Quiz"></i>&nbsp;{{ $tanggalMengerjakanQuiz->locale('id')->isoFormat('D MMMM YYYY | H:mm') }}</div>
+      <button type="button" onclick="window.location.href='/nilai'" class="btn btn-primary btn-sm"><i class='bx bx-left-arrow-alt bx-xs' style="margin-bottom: 3px;"></i>&nbsp;Back</button>
+      <div style="margin-top: 3px;"><i class='bx bx-history bx-spin text-primary mb-1' data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="auto" title="Quiz Submission Date"></i>&nbsp;{{ $tanggalMengerjakanQuiz->locale('en')->isoFormat('D MMMM YYYY | H:mm') }}</div>
     </div>
     <div class="table-responsive text-nowrap mb-3">
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>Nama Lengkap</th>
-            <th>Judul Quiz</th>
-            <th>Total Soal</th>
-            <th>Jawaban Benar</th>
-            <th>Jawaban Salah</th>
-            <th>Nilai</th>
+          <th>Full Name</th>
+          <th>Quiz Title</th>
+          <th>Total Questions</th>
+          <th>Correct Answers</th>
+          <th>Wrong Answers</th>
+          <th>Score</th>
           </tr>
         </thead>
         <tbody>
@@ -99,9 +99,9 @@
           @elseif(!$score->correct && $answer->answer === $score->answer->answer)
           <div class="d-flex">
             @if (preg_match("/[\x{0000}-\x{007F}]/u", $answer->answer))
-            <span class="badge bg-label-danger text-capitalize" style="text-transform:none; font-size: 0.9125em; padding: 0.42em 0.493em; text-align:start; line-height: 1;">{{ $answer->answer }}</span>&nbsp;<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Jawaban Anda Salah!" class="bx bx-x bx-tada text-danger d-flex align-items-center cursor-pointer" style="font-size: 20px;"></i>
+            <span class="badge bg-label-danger text-capitalize" style="text-transform:none; font-size: 0.9125em; padding: 0.42em 0.493em; text-align:start; line-height: 1;">{{ $answer->answer }}</span>&nbsp;<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Your answer is incorrect!" class="bx bx-x bx-tada text-danger d-flex align-items-center cursor-pointer" style="font-size: 20px;"></i>
             @else
-            <span class="badge bg-label-danger mt-2" style="text-transform:none; font-size: 1.2rem; padding: 0.42em 0.493em; text-align:start; line-height: 1;">{{ $answer->answer }}</span>&nbsp;<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Jawaban Anda Salah!" class="bx bx-x bx-tada text-danger d-flex align-items-center cursor-pointer" style="font-size: 20px;"></i>
+            <span class="badge bg-label-danger mt-2" style="text-transform:none; font-size: 1.2rem; padding: 0.42em 0.493em; text-align:start; line-height: 1;">{{ $answer->answer }}</span>&nbsp;<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Your answer is incorrect!" class="bx bx-x bx-tada text-danger d-flex align-items-center cursor-pointer" style="font-size: 20px;"></i>
             @endif
           </div>
           @else
@@ -128,7 +128,7 @@
       @endif
       @endforeach
     </ol>
-    @if($score->answer_id == null)<div class="d-flex" style="margin-left: 20px; margin-top:-10px; margin-bottom:20px"><span class="badge bg-label-warning" style="text-transform:none; font-size: 0.9125em; padding: 0.42em 0.493em;">Anda tidak menjawab soal ini!</span>&nbsp;<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Jawaban Anda Salah!" class="bx bx-error text-warning bx-flashing d-flex align-items-center cursor-pointer" style="font-size: 20px;"></i></div>@endif
+    @if($score->answer_id == null)<div class="d-flex" style="margin-left: 20px; margin-top:-10px; margin-bottom:20px"><span class="badge bg-label-warning" style="text-transform:none; font-size: 0.9125em; padding: 0.42em 0.493em;">You did not answer this question!</span>&nbsp;<i data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="right" title="Your answer is incorrect!" class="bx bx-error text-warning bx-flashing d-flex align-items-center cursor-pointer" style="font-size: 20px;"></i></div>@endif
     @endforeach
   </div>
 </div>
