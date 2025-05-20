@@ -1,7 +1,4 @@
-BubbleSmart Application
-Version: 1.0
-Author: @Bubble (https://github.com/bubblevy)
-Last Update: 1 Januari 2024
+
 
 This Application use:
 - Framework Laravel 10
@@ -9,57 +6,6 @@ This Application use:
 - Jquery
 - other
 
-### Support
-https://trakteer.id/bubblenate/tip
-
-### ABOUT APP
-BubbleSmart adalah aplikasi belajar online Aksara Jawa dengan mudah dan menyenangkan. Berikut beberapa fitur yang ada di BubbleSmart:
-
-## FITUR BUBBLESMART:
-
-# FITUR ADMIN
-
-- Dashboard
-  Di dalam 'Dashboard', admin bisa melihat statistik pengguna yang mengerjakan quiz, total pengguna, total quiz, dan thread forum.
-
-- Lessons Data
-  Dalam menu 'Lessons Data', admin dapat melakukan insert Lessons Data, update Lessons Data, dan juga delete Lessons Data. Selain itu, terdapat juga fitur searching untuk melakukan filer saat menSearch Lessons Data. Lessons Data berisi gambar, judul, Category, dan juga audio.
-
-- Data Quiz
-  Di dalam menu 'Data Quiz', admin dapat melakukan insert data quiz, update data quiz, delete data quiz, lihat pertanyaan, tambah pertannyaan, update pertannyaan, dan juga delete pertanyaan. Terdapat juga fitur pencarian data quiz dan juga data pertannyan.
-
-- Forum
-  Dalam menu 'Forum', admin dapat menambahkan thread baru, delete thread, like thread, comment thread dan juga delete comment pada thread. Admin bisa melihat siapa saja yang like thread.
-
-- Laporan
-  Dalam menu 'Laporan', admin dapat melihat siapa saja yang sudah mengerjakan quiz, serta dapat melihat jawaban dan juga nilai pengguna aplikasi.
-
-- Text to Aksara
-  Dalam menu 'Text to Aksara', admin dapat mengubah text latin menjadi huruf aksara jawa. Terdapat juga menu salin text aksara untuk mempercepat.
-
-- Pengaturan
-  Di menu 'Pengaturan', admin dapat melihat dan mengubah informasi identitas pribadi, termasuk perubahan identitas, perubahan kata sandi, dan pengaturan lain yang terkait dengan aplikasi.
-
-# FITUR MEMBER
-
-- Materi
-  Di menu 'Materi', Pengguna dapat melihat materi pembelajaran aksara jawa berupa macam-macam huruf aksara jawa, sandhangan, dan juga pasangannya serta pengguna bisa mendengarkan audio pelafalannya.
-
-- Quiz
-  Dalam menu 'Quiz', terdapat soal-soal yang bisa dikerjakan untuk melatih pemahaman tentang aksara jawa. Quiz ini bisa dikerjakan secara berulang-ulang.
-
-- Forum
-  Forum digunakan untuk berdiskusi jika terdapat masalah mengenai materi yang ada. Setiap pengguna bisa mengajukan pertanyaan dan nantinya pertanyaan tersebut bisa dijawab oleh pengguna lain.
-  Dalam menu 'Forum', member dapat menambahkan thread baru, delete thread, like thread, comment thread dan juga delete comment pada thread. member juga bisa melihat siapa saja yang like thread.
-
-- Nilai
-  Setiap selesai menjawab quiz, pengguna dapat melihat nilainya langsung di menu 'Nilai'. Pengguna juga dapat melihat pertanyaan mana saja yang jawabannya benar dan juga salah. Selain itu, pengguna juga bisa menghapus histori mengerjakan quiznya.
-
-- Pengaturan
-  Dalam menu 'Pengaturan', pengguna dapat melihat dan mengubah identitas diri seperti nama, alamat, foto profil dan lain-lain. Pengguna juga dapat mengubah password.
-
-- Dokumentasi
-  Dalam dokumentasi, pengguna dapat melihat tutorial bagaimana cara menggunakan aplikasi. Mulai dari membuat akun, melihat materi, mengerjakan quiz, melihat nilai quiz, mengubah password, dan lain-lain.
 
 ### Installation
 
