@@ -22,7 +22,7 @@
 <li class="menu-item {{ Request::is('quiz*') ? 'active' : '' }}">
   <a class="menu-link cursor-pointer" onclick="window.location.href='/quiz'">
     <i class="menu-icon tf-icons bx bx-joystick"></i>
-    <div>Quiz</div>
+    <div>Test</div>
   </a>
 </li>
 @endcan
@@ -30,7 +30,7 @@
 <li class="menu-item {{ Request::is('admin/data-quiz*') ? 'active' : '' }}">
   <a class="menu-link cursor-pointer" onclick="window.location.href='/admin/data-quiz'">
     <i class="menu-icon tf-icons bx bx-joystick"></i>
-    <div>Data Quiz</div>
+    <div>Data Test</div>
   </a>
 </li>
 @endcan

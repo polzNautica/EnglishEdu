@@ -45,6 +45,25 @@ class MateriController extends Controller
         ]);
     }
 
+        public function testlesson3()
+    {
+        return view('users.materi.lesson.test3', [
+            'app' => Application::all(),
+            'materis' => Materi::all(),
+            'title' => 'Test'
+        ]);
+    }
+
+            public function testlesson4()
+    {
+        return view('users.materi.lesson.test4', [
+            'app' => Application::all(),
+            'materis' => Materi::all(),
+            'title' => 'Test'
+        ]);
+    }
+
+
 
     public function showlesson($id)
     {

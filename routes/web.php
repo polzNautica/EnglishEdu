@@ -58,6 +58,9 @@ Route::get('/materi', [MateriController::class, 'show'])->middleware('member');
 Route::get('/materi/lesson/{id}', [MateriController::class, 'showlesson'])->name('lesson.show')->middleware('member');
 Route::get('/materi/test', [MateriController::class, 'testlesson'])->name('test.show')->middleware('member');
 Route::get('/materi/test2', [MateriController::class, 'testlesson2'])->name('test2.show')->middleware('member');
+Route::get('/materi/test3', [MateriController::class, 'testlesson3'])->name('test3.show')->middleware('member');
+Route::get('/materi/test4', [MateriController::class, 'testlesson4'])->name('test4.show')->middleware('member');
+
 
 
 // quiz users

@@ -179,7 +179,7 @@
 @endsection
 
 @section('css')
-@vite(['resources/scss/test2.scss'])
+@vite(['resources/js/app.js'])
 <style>
     :root {
     --point-1-top: 415px;
