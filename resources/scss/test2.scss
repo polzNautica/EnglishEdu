@@ -10,7 +10,7 @@
 .image-indicators img {
     width: 100%;
     border-radius: 10px;
-    transition: width 0.4s ease, transform 0.4s ease;
+    transition: transform 0.5s ease, transform-origin 0.5s ease;
 }
 
 .image-indicators label {
@@ -135,7 +135,7 @@
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
-@for $i from 1 through 4 {
+@for $i from 1 through 11 {
     $value: $i + 1;
 
     #label-#{$i} {
@@ -225,6 +225,112 @@
         animation-delay: 6.5s;
         animation-play-state: running;
     }
+
+        #point-#{$i}:checked ~ .description div:nth-child(#{$value}) p:nth-child(5) {
+        width: 0;
+        opacity: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        -webkit-animation: type2 2s steps(40, end);
+        animation: type2 2s steps(40, end);
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+        -webkit-animation-delay: 6.5s;
+        animation-delay: 6.5s;
+        animation-play-state: running;
+    }
+
+        #point-#{$i}:checked ~ .description div:nth-child(#{$value}) p:nth-child(6) {
+        width: 0;
+        opacity: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        -webkit-animation: type2 2s steps(40, end);
+        animation: type2 2s steps(40, end);
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+        -webkit-animation-delay: 6.5s;
+        animation-delay: 6.5s;
+        animation-play-state: running;
+    }
+
+        #point-#{$i}:checked ~ .description div:nth-child(#{$value}) p:nth-child(7) {
+        width: 0;
+        opacity: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        -webkit-animation: type2 2s steps(40, end);
+        animation: type2 2s steps(40, end);
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+        -webkit-animation-delay: 6.5s;
+        animation-delay: 6.5s;
+        animation-play-state: running;
+    }
+
+        #point-#{$i}:checked ~ .description div:nth-child(#{$value}) p:nth-child(8) {
+        width: 0;
+        opacity: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        -webkit-animation: type2 2s steps(40, end);
+        animation: type2 2s steps(40, end);
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+        -webkit-animation-delay: 6.5s;
+        animation-delay: 6.5s;
+        animation-play-state: running;
+    }
+
+        #point-#{$i}:checked ~ .description div:nth-child(#{$value}) p:nth-child(9) {
+        width: 0;
+        opacity: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        -webkit-animation: type2 2s steps(40, end);
+        animation: type2 2s steps(40, end);
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+        -webkit-animation-delay: 6.5s;
+        animation-delay: 6.5s;
+        animation-play-state: running;
+    }
+
+        #point-#{$i}:checked ~ .description div:nth-child(#{$value}) p:nth-child(10) {
+        width: 0;
+        opacity: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        -webkit-animation: type2 2s steps(40, end);
+        animation: type2 2s steps(40, end);
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+        -webkit-animation-delay: 6.5s;
+        animation-delay: 6.5s;
+        animation-play-state: running;
+    }
+
+        #point-#{$i}:checked ~ .description div:nth-child(#{$value}) p:nth-child(11) {
+        width: 0;
+        opacity: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        -webkit-animation: type2 2s steps(40, end);
+        animation: type2 2s steps(40, end);
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+        -webkit-animation-delay: 6.5s;
+        animation-delay: 6.5s;
+        animation-play-state: running;
+    }
+
 
 }
 

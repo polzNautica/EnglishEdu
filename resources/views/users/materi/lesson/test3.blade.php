@@ -21,10 +21,18 @@
                 <!-- SECTION 1: THE BEGINNING OF THE ADVENTURE -->
                 <section class="story-section" id="section1">
                     <div class="text-block">
-                        <h2>The Beginning of the Adventure</h2>
-                        <p>In a distant kingdom, bordered by ancient oaks and morning mist, lay the Enchanted Forest. It was
-                            said that deep within its depths lay a millennial secret, guarded by ancient spirits.</p>
-                        <button class="next-section-btn">Continue the story</button>
+                        <h2>What is Past Tense?</h2>
+                        <p>Past tense is used to talk about actions that already happened.
+						<br><br>
+						It describes things we did yesterday, last week, this morning, or earlier.
+						<br><br>
+						Examples:
+						<br>
+						I played football yesterday.
+						<br>
+						She went to the shop this morning.
+						</p>
+                        <button class="next-section-btn">Continue the lesson</button>
                     </div>
                     <div class="image-block">
                         <img src="https://raw.githubusercontent.com/mickaellherminez/img/main/codepen/january-week1/image-1.png" alt="Illustration of the Enchanted Forest" class="image-placeholder" />
@@ -34,10 +42,37 @@
                 <!-- SECTION 2: THE MYSTERIOUS CREATURE -->
                 <section class="story-section" id="section2">
                     <div class="text-block">
-                        <h2>The Mysterious Creature</h2>
-                        <p>As the trees thickened and the light grew scarce, a silhouette appeared. It was said that this
-                            creature watched over the balance of the forest, protecting all living beings from a forgotten evil.
-                        </p>
+                        <h2>Types of Past Tense Verbs</h2>
+						<p>✅ Regular Verb <br>Just add -ed to the base verb. <br>
+					Present Past <br>
+walk -> walked <br>
+clean -> cleaned <br>
+jump -> jumped <br>
+<br>
+Examples:
+<br>
+They jumped over the rope.
+<br>
+I cleaned my room.</p>
+
+<p>
+	❗ Irregular Verbs <br>
+Do not follow the -ed rule. <br>
+
+Must be memorized. <br>
+
+Present Past <br>
+go -> went <br>
+eat -> ate <br>
+see -> saw <br><br>
+
+Examples: <br>
+
+We went to the zoo. <br>
+
+She ate noodles for lunch.
+
+</p>
                         <button class="next-section-btn">Discover the next part</button>
                     </div>
                     <div class="image-block">
@@ -48,9 +83,30 @@
                 <!-- SECTION 3: THE ULTIMATE CHALLENGE -->
                 <section class="story-section" id="section3">
                     <div class="text-block">
-                        <h2>The Ultimate Challenge</h2>
-                        <p>Guided by unexpected courage, the adventurer prepared to break the curse that lay upon these lands.
-                            The fate of the Enchanted Forest now rested in their hands.</p>
+                        <h2>The uses in sentences</h2>
+						<p>
+							🟢 Positive Sentences <br>
+							Subject + past tense verb. For examples: <br>
+
+							1. He watched TV. <br>
+
+							2. They played in the park. <br><br>
+
+							🔴 Negative Sentences <br>
+							Subject + did not + base verb. For examples: <br>
+
+							1. He did not watch TV. <br>
+
+							2. They did not play in the park. <br><br>
+
+							❓ Questions <br>
+							Did + subject + base verb + ? .For examples: <br>
+
+							1. Did he watch TV? <br>
+
+							2. Did they play in the park?
+
+						</p>
                     </div>
                     <div class="image-block">
                         <img src="https://raw.githubusercontent.com/mickaellherminez/img/main/codepen/january-week1/image-3.png" alt="Illustration of the final ritual" class="image-placeholder" />
@@ -408,8 +464,8 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 100vh;
-	padding: 4rem;
+	/* min-height: 100vh; */
+	/* padding: 4rem; */
 	gap: 6rem;
 	max-width: 1600px;
 	margin: 0 auto;
@@ -550,7 +606,7 @@ p {
 	border-radius: 30px;
 	cursor: pointer;
 	font-size: 1.1rem;
-	margin-top: 2rem;
+	/* margin-top: 2rem; */
 	transition: all 0.3s ease;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -647,7 +703,7 @@ p {
 /* Styles responsives */
 @media screen and (max-width: 1200px) {
 	.story-section {
-		padding: 2rem;
+		/* padding: 2rem; */
 		gap: 3rem;
 	}
 	.text-block {

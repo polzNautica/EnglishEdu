@@ -11,7 +11,7 @@
   </div>
  <div class="card shadow-sm">
     <h1>🎯 English Grammar Word Sorting Game</h1>
-    <p>Drag and drop the words into the correct boxes (Verbs or Nouns).</p>
+    <p>Drag and drop the words into the correct boxes (Irregular verb and Regular verbs).</p>
     
     <div class="score-display">
         Score: <span id="score">0</span> | Attempts: <span id="attempts">0</span>
@@ -21,26 +21,27 @@
     
     <div class="game-container">
         <div id="leftBox" class="box" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div class="box-title">Verbs (Action words)</div>
+            <div class="box-title">Irregular Verbs (Past Tense)</div>
             <div class="words-container" id="verbsContainer"></div>
         </div>
         
         <div id="middleBox" class="box">
             <div class="box-title">Words to Sort</div>
             <div class="words-container" id="wordsContainer">
-                <div class="word" draggable="true" id="word1" data-type="verb">run</div>
-                <div class="word" draggable="true" id="word2" data-type="verb">jump</div>
-                <div class="word" draggable="true" id="word3" data-type="noun">elephant</div>
-                <div class="word" draggable="true" id="word4" data-type="noun">Taj Mahal</div>
-                <div class="word" draggable="true" id="word5" data-type="verb">swim</div>
-                <div class="word" draggable="true" id="word6" data-type="noun">book</div>
-                <div class="word" draggable="true" id="word7" data-type="verb">write</div>
-                <div class="word" draggable="true" id="word8" data-type="noun">teacher</div>
+                <!-- verb= Irregular verb, noun=Regular verb -->
+                <div class="word" draggable="true" id="word1" data-type="verb">Sang</div>
+                <div class="word" draggable="true" id="word2" data-type="verb">Flew</div>
+                <div class="word" draggable="true" id="word3" data-type="verb">Drank</div>
+                <div class="word" draggable="true" id="word4" data-type="verb">Wrote</div>
+                <div class="word" draggable="true" id="word5" data-type="noun">Cleaned</div>
+                <div class="word" draggable="true" id="word6" data-type="noun">Opened</div>
+                <div class="word" draggable="true" id="word7" data-type="noun">Laughed</div>
+                <div class="word" draggable="true" id="word8" data-type="noun">Watched</div>
             </div>
         </div>
         
         <div id="rightBox" class="box" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div class="box-title">Nouns (Person, Place, Animal, Thing)</div>
+            <div class="box-title">Regular Verbs (Past Tense)</div>
             <div class="words-container" id="nounsContainer"></div>
         </div>
     </div>

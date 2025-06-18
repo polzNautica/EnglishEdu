@@ -15,7 +15,7 @@
             class="card-img-top" style="height:150px; object-fit: contain;" alt="Lesson image: {{ $lesson->title }}">
         <div class="card-body">
           <h5 class="card-title">{{ $lesson->title }}</h5>
-          <div class="card-text" style="max-height: 150px; overflow: auto;">
+          <div class="card-text" style="max-height: 200px; overflow: auto;">
             {!! Str::limit(strip_tags($lesson->text, '<h1>'), 250, '...') !!}
           </div>
         </div>
@@ -26,6 +26,27 @@
     @empty
       <!-- <p class="text-muted">No lessons found.</p> -->
     @endforelse
+
+            <div class="card shadow-sm materi-card">
+      <img src='assets/img/aksara/storytelling.jpg'
+        class="card-img-top" 
+        style="height:150px; object-fit: contain;" 
+        alt="Lesson image">
+      <div class="card-body">
+        <h5 class="card-title">Scrolling Lesson</h5>
+        <div class="card-text" style="max-height: 200px; overflow: auto;">
+          <h1>Types of Past Tense</h1>
+          <p>
+            Discover how the past tense is used to describe actions and events that have already happened. Learn through examples and explanations to better understand how we talk about the past.
+          </p>
+        </div>
+      </div>
+      <div class="card-footer text-end bg-transparent border-top-0">
+        <a href="{{ route('test3.show') }}" class="btn btn-sm btn-outline-primary">See more</a>
+      </div>
+    </div>
+
+
     <div class="card shadow-sm materi-card">
       <img src='assets/img/aksara/quiz.jpg'
         class="card-img-top" 
@@ -33,10 +54,10 @@
         alt="Lesson image">
       <div class="card-body">
         <h5 class="card-title">Interactive Quiz</h5>
-        <div class="card-text" style="max-height: 150px; overflow: auto;">
-          <h1>Interactive Quiz</h1>
+        <div class="card-text" style="max-height: 200px; overflow: auto;">
+          <h1>Past Tense Quiz</h1>
           <p>
-            This is Interactive Quiz Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quos...
+            Answer all the questions to help your understanding on Past Tense. This will help you understand the usage of past tense in a sentence.
           </p>
         </div>
       </div>
@@ -52,10 +73,10 @@
         alt="Lesson image">
       <div class="card-body">
         <h5 class="card-title">Dragging Word Game</h5>
-        <div class="card-text" style="max-height: 150px; overflow: auto;">
-          <h1>English Grammar Word Sorting Game</h1>
+        <div class="card-text" style="max-height: 200px; overflow: auto;">
+          <h1>Past Tense Irregular Verbs and Regular Verbs Sorting Game</h1>
           <p>
-            This is TEnglish Grammar Word Sorting Game Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quos...
+            Arrange the words to the correct section.
           </p>
         </div>
       </div>
@@ -82,7 +103,7 @@
             class="card-img-top" style="height:150px; object-fit: contain;" alt="Lesson image: {{ $lesson->title }}">
         <div class="card-body">
           <h5 class="card-title">{{ $lesson->title }}</h5>
-          <div class="card-text" style="max-height: 150px; overflow: auto;">
+          <div class="card-text" style="max-height: 200px; overflow: auto;">
             {!! Str::limit(strip_tags($lesson->text, '<h1>'), 250, '...') !!}
           </div>
         </div>
@@ -99,11 +120,11 @@
         style="height:150px; object-fit: contain;" 
         alt="Lesson image">
       <div class="card-body">
-        <h5 class="card-title">Title Test Interactive Quiz</h5>
-        <div class="card-text" style="max-height: 150px; overflow: auto;">
-          <h1>Text Test Interactive Quiz</h1>
+        <h5 class="card-title">Magic Picture</h5>
+        <div class="card-text" style="max-height: 200px; overflow: auto;">
+          <h1>Past Tense Sentences.</h1>
           <p>
-            This is Text Test Interactive Quiz Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quos...
+            Click the image shown to read and listen to sentences constructed using past tense.
           </p>
         </div>
       </div>
@@ -129,7 +150,7 @@
             class="card-img-top" style="height:150px; object-fit: contain;" alt="Lesson image: {{ $lesson->title }}">
         <div class="card-body">
           <h5 class="card-title">{{ $lesson->title }}</h5>
-          <div class="card-text" style="max-height: 150px; overflow: auto;">
+          <div class="card-text" style="max-height: 200px; overflow: auto;">
             {!! Str::limit(strip_tags($lesson->text, '<h1>'), 250, '...') !!}
           </div>
         </div>
@@ -158,7 +179,7 @@
             class="card-img-top" style="height:150px; object-fit: contain;" alt="Lesson image: {{ $lesson->title }}">
         <div class="card-body">
           <h5 class="card-title">{{ $lesson->title }}</h5>
-          <div class="card-text" style="max-height: 150px; overflow: auto;">
+          <div class="card-text" style="max-height: 200px; overflow: auto;">
             {!! Str::limit(strip_tags($lesson->text, '<h1>'), 250, '...') !!}
           </div>
         </div>
@@ -187,7 +208,7 @@
             class="card-img-top" style="height:150px; object-fit: contain;" alt="Lesson image: {{ $lesson->title }}">
         <div class="card-body">
           <h5 class="card-title">{{ $lesson->title }}</h5>
-          <div class="card-text" style="max-height: 150px; overflow: auto;">
+          <div class="card-text" style="max-height: 200px; overflow: auto;">
             {!! Str::limit(strip_tags($lesson->text, '<h1>'), 250, '...') !!}
           </div>
         </div>
@@ -198,24 +219,6 @@
     @empty
       <!-- <p class="text-muted">No lessons found.</p> -->
     @endforelse
-        <div class="card shadow-sm materi-card">
-      <img src='assets/img/aksara/storytelling.jpg'
-        class="card-img-top" 
-        style="height:150px; object-fit: contain;" 
-        alt="Lesson image">
-      <div class="card-body">
-        <h5 class="card-title">Title Test Interactive Quiz</h5>
-        <div class="card-text" style="max-height: 150px; overflow: auto;">
-          <h1>Story Scroll Test</h1>
-          <p>
-            This is Story Scrolling Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quos...
-          </p>
-        </div>
-      </div>
-      <div class="card-footer text-end bg-transparent border-top-0">
-        <a href="{{ route('test3.show') }}" class="btn btn-sm btn-outline-primary">See more</a>
-      </div>
-    </div>
     <!-- <div class="card shadow-sm materi-card">
       <img src='logo-aplikasi/logo.png'
         class="card-img-top" 
@@ -223,7 +226,7 @@
         alt="Lesson image">
       <div class="card-body">
         <h5 class="card-title">Test Title</h5>
-        <div class="card-text" style="max-height: 150px; overflow: auto;">
+        <div class="card-text" style="max-height: 200px; overflow: auto;">
           Test text
         </div>
       </div>
