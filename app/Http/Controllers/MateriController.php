@@ -85,7 +85,7 @@ class MateriController extends Controller
             'category' => 'required|in:past_simple_regular_verbs,past_simple_irregular_verbs,past_continuous,past_perfect,storytelling',
             'audio' => 'mimes:mp3|max:250',
             'text' => 'nullable|max:1000|string',
-            'video' => 'nullable|max:255|string',
+            'video' => 'nullable|file|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime|max:5120', // 5MB
             'link' => 'nullable|max:255|string',
         ]);
 
@@ -117,7 +117,7 @@ class MateriController extends Controller
             'categoryEdit' => 'required|in:past_simple_regular_verbs,past_simple_irregular_verbs,past_continuous,past_perfect,storytelling',
             'audioEdit' => 'mimes:mp3|max:250',
             'textEdit' => 'nullable|string',
-            'videoEdit' => 'nullable|max:255|string',
+            'videoEdit' => 'nullable|file|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime|max:5120', // 5MB
             'linkEdit' => 'nullable|max:255|string',
         ], [
             'imageEdit.image' => 'The image field must be an image.',

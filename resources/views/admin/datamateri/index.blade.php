@@ -48,6 +48,7 @@
   }
 </style>
 @endsection
+
 <div class="flash-message" data-add-materi="@if(session()->has('addMateriSuccess')) {{ session('addMateriSuccess') }} @endif" data-edit-materi="@if(session()->has('editMateriSuccess')) {{ session('editMateriSuccess') }} @endif" data-delete-materi="@if(session()->has('deleteMateriSuccess')) {{ session('deleteMateriSuccess') }} @endif"></div>
 <div class="row">
   <div class="col-md-12 col-lg-12 order-2 mb-4">
@@ -205,9 +206,23 @@
                 {{ $message }}
               </div>
               @enderror
-              <div class="form-text @error('audio') d-none @enderror">Ukuran audio maks 250 KB</div>
+              <div class="form-text @error('audio') d-none @enderror">Audio size max 250 KB</div>
             </div>
           </div>
+
+          <div class="row">
+            <div class="col mb-3">
+              <label for="video" class="form-label">Upload Video</label>
+              <input type="file" id="video" name="video" class="form-control @error('video') is-invalid @enderror">
+              @error('video')
+              <div class="invalid-feedback" style="margin-bottom: -3px;">
+                {{ $message }}
+              </div>
+              @enderror
+              <div class="form-text @error('video') d-none @enderror">Video size max 5 MB</div>
+            </div>
+          </div>
+
           <div class="row">
             <div class="col">
               <label for="category" class="form-label required-label">Category</label>

@@ -53,7 +53,7 @@
 
       @if ($lesson->video)
         <div class="mt-3">
-          <video controls class="w-100" style="max-height: 400px;">
+          <video controls class="w-100 rounded shadow-sm" style="max-height: 400px;" preload="metadata">
             <source src="{{ asset('storage/' . $lesson->video) }}" type="video/mp4">
             Your browser does not support the video tag.
           </video>
