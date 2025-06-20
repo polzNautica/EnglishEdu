@@ -82,7 +82,7 @@ class MateriController extends Controller
         $validatedData = $request->validate([
             'image' => 'image|file|max:500',
             'title' => 'required|max:255|string',
-            'category' => 'required|in:past_simple_regular_verbs,past_simple_irregular_verbs,past_continuous,past_perfect,storytelling',
+            'category' => 'required|in:notes_example,exercises_activities,sentences',
             'audio' => 'mimes:mp3|max:250',
             'text' => 'nullable|max:1000|string',
             'video' => 'nullable|file|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime|max:5120', // 5MB
@@ -114,7 +114,7 @@ class MateriController extends Controller
         $validatedData = $request->validate([
             'imageEdit' => 'image|file|max:500',
             'titleEdit' => 'max:255|string',
-            'categoryEdit' => 'required|in:past_simple_regular_verbs,past_simple_irregular_verbs,past_continuous,past_perfect,storytelling',
+            'categoryEdit' => 'required|in:notes_example,exercises_activities,sentences',
             'audioEdit' => 'mimes:mp3|max:250',
             'textEdit' => 'nullable|string',
             'videoEdit' => 'nullable|file|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime|max:5120', // 5MB

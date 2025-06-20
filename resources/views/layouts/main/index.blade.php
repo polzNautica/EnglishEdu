@@ -150,6 +150,7 @@
   <script src="{{ asset('assets/vendors/assets/js/main.js') }}"></script>
   <script src="{{ asset('assets/vendors/assets/js/dashboards-analytics.js') }}"></script>
   <script src="{{ asset('assets/vendors/js/buttons.js') }}"></script>
+  
   @yield('script')
 </body>
 

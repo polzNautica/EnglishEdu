@@ -15,16 +15,12 @@ $(".buttonEditMateri").on("click", function () {
     const category = $(this).data("category-materi");
     const text = $(this).data("text-materi"); 
 
-    if (category == "past_simple_regular_verbs") { 
-        $("#past_simple_regular_verbs").attr("selected", true);
-    } else if (category == "past_simple_irregular_verbs") {
-        $("#past_simple_irregular_verbs").attr("selected", true);
-    } else if (category == "past_continuous") {
-        $("#past_continuous").attr("selected", true);
-    } else if (category == "past_perfect") {
-        $("#past_perfect").attr("selected", true);
-    } else {
-        $("#storytelling").attr("selected", true);
+    if (category == "notes_example") { 
+        $("#notes_example").attr("selected", true);
+    } else if (category == "exercises_activities") {
+        $("#exercises_activities").attr("selected", true);
+    } else  {
+        $("#sentences").attr("selected", true);
     }
 
     $(".codeMateri").val(code);

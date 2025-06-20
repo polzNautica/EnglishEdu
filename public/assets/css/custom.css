@@ -16,7 +16,7 @@
   @media (min-width: 992px) {
     /* Laptop and up */
     .materi-card {
-      width: 500px;
-      height: 500px;
+      width: auto;
+      height: auto;
     }
   }

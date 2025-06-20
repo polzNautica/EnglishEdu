@@ -21,95 +21,39 @@
                 <!-- SECTION 1: THE BEGINNING OF THE ADVENTURE -->
                 <section class="story-section" id="section1">
                     <div class="text-block">
-                        <h2>What is Past Tense?</h2>
-                        <p>Past tense is used to talk about actions that already happened.
-						<br><br>
-						It describes things we did yesterday, last week, this morning, or earlier.
-						<br><br>
-						Examples:
-						<br>
-						I played football yesterday.
-						<br>
-						She went to the shop this morning.
-						</p>
-                        <button class="next-section-btn">Continue the lesson</button>
+                        <h2>The Arrival</h2>
+						<p>Elara arrived at the old mill just as the sun dipped below the distant hills. The air was cool, and a gentle breeze rustled through the ancient oak trees that guarded the path. She carried a worn leather satchel, its contents a mystery even to her. For weeks, she had dreamed of this secluded place, a relic of a bygone era, and now, finally, she stood before its weathered wooden door. A faint creak echoed as she pushed it open, revealing a dusty interior bathed in the last golden rays of twilight. The smell of old wood and forgotten grains filled the air. She noticed the giant water wheel, motionless and silent, outside the window. It had once powered the entire operation, grinding corn for the village.
+</p>
+                        <button class="next-section-btn">Continue the story</button>
                     </div>
                     <div class="image-block">
-                        <img src="https://raw.githubusercontent.com/mickaellherminez/img/main/codepen/january-week1/image-1.png" alt="Illustration of the Enchanted Forest" class="image-placeholder" />
+                        <img src="/assets/img/lesson-images/1_story1.jpg" alt="Illustration of the Enchanted Forest" class="image-placeholder" />
                     </div>
                 </section>
 
                 <!-- SECTION 2: THE MYSTERIOUS CREATURE -->
                 <section class="story-section" id="section2">
                     <div class="text-block">
-                        <h2>Types of Past Tense Verbs</h2>
-						<p>✅ Regular Verb <br>Just add -ed to the base verb. <br>
-					Present Past <br>
-walk -> walked <br>
-clean -> cleaned <br>
-jump -> jumped <br>
-<br>
-Examples:
-<br>
-They jumped over the rope.
-<br>
-I cleaned my room.</p>
-
-<p>
-	❗ Irregular Verbs <br>
-Do not follow the -ed rule. <br>
-
-Must be memorized. <br>
-
-Present Past <br>
-go -> went <br>
-eat -> ate <br>
-see -> saw <br><br>
-
-Examples: <br>
-
-We went to the zoo. <br>
-
-She ate noodles for lunch.
-
+                        <h2>The Discovery</h2>
+						<p>Inside, Elara explored the quiet chambers. She walked past large, silent gears and heavy millstones, their surfaces smooth from years of use. Dust motes danced in the shafts of light that pierced through small, grimy windows. On a rickety table in the corner, beneath a layer of cobwebs, she discovered a small, leather-bound journal. Its pages were brittle and yellowed, filled with elegant script. The entries detailed the daily life of the last miller, recording weather patterns, harvest yields, and even small personal observations about the changing seasons. Elara carefully turned the pages, feeling a profound connection to the person who had once lived and worked in this very spot. She read about a hidden compartment, mentioned in passing, that held "the miller's greatest treasure."
 </p>
                         <button class="next-section-btn">Discover the next part</button>
                     </div>
                     <div class="image-block">
-                        <img src="https://raw.githubusercontent.com/mickaellherminez/img/main/codepen/january-week1/image-2.png" alt="Illustration of the mythical creature" class="image-placeholder" />
+                        <img src="/assets/img/lesson-images/2_story1.jpg" alt="Illustration of the mythical creature" class="image-placeholder" />
                     </div>
                 </section>
 
                 <!-- SECTION 3: THE ULTIMATE CHALLENGE -->
                 <section class="story-section" id="section3">
                     <div class="text-block">
-                        <h2>The uses in sentences</h2>
-						<p>
-							🟢 Positive Sentences <br>
-							Subject + past tense verb. For examples: <br>
-
-							1. He watched TV. <br>
-
-							2. They played in the park. <br><br>
-
-							🔴 Negative Sentences <br>
-							Subject + did not + base verb. For examples: <br>
-
-							1. He did not watch TV. <br>
-
-							2. They did not play in the park. <br><br>
-
-							❓ Questions <br>
-							Did + subject + base verb + ? .For examples: <br>
-
-							1. Did he watch TV? <br>
-
-							2. Did they play in the park?
-
-						</p>
-                    </div>
+                        <h2>The Secret</h2>
+							<p>
+								Her heart pounded with anticipation as she searched for the hidden compartment. She tapped along the walls, examined loose floorboards, and ran her hands over every surface described in the journal. Finally, behind a loose stone in the fireplace, her fingers brushed against a small, carved wooden box. It was surprisingly light. With trembling hands, she opened it. Inside, there was no gold or jewels, but a single, carefully preserved feather from a bluebird, and a dried wild rose. A note lay beneath them: "True treasure is in moments, not things." Elara smiled. She understood. The miller's greatest treasure wasn't tangible wealth, but the simple, fleeting beauty of nature and the quiet joy of a life lived close to the earth. She closed the box, placed it back, and left the mill, carrying a new kind of treasure in her heart.
+	
+							</p>                    </div>
                     <div class="image-block">
-                        <img src="https://raw.githubusercontent.com/mickaellherminez/img/main/codepen/january-week1/image-3.png" alt="Illustration of the final ritual" class="image-placeholder" />
+                        <img src="/assets/img/lesson-images/3_story1.jpg" alt="Illustration of the final ritual" class="image-placeholder" />
                     </div>
                 </section>
             </div>

@@ -91,21 +91,21 @@
                   <td class="text-capitalize text-center">{{ $materi->title }}</td>
                   <td class="text-center">
                       @switch($materi->category)
-                          @case('past_simple_regular_verbs')
-                              <span class="badge bg-label-success fw-bold">Past Simple (Regular Verbs)</span>
+                          @case('notes_example')
+                              <span class="badge bg-label-success fw-bold">Notes and Examples</span>
                               @break
-                          @case('past_simple_irregular_verbs')
-                              <span class="badge bg-label-info fw-bold">Past Simple (Irregular Verbs)</span>
+                          @case('exercises_activities')
+                              <span class="badge bg-label-info fw-bold">Exercises and Activities</span>
                               @break
-                          @case('past_continuous')
-                              <span class="badge bg-label-warning fw-bold">Past Continuous</span>
+                          @case('sentences')
+                              <span class="badge bg-label-warning fw-bold">Sentences using Past Simple</span>
                               @break
-                          @case('past_perfect')
+                          <!-- @case('past_perfect')
                               <span class="badge bg-label-primary fw-bold">Past Perfect</span>
                               @break
                           @case('storytelling')
                               <span class="badge bg-label-dark fw-bold">Storytelling and Practice</span>
-                              @break
+                              @break -->
                           @default
                               <span class="badge bg-label-secondary fw-bold">Unknown</span>
                       @endswitch
@@ -228,11 +228,11 @@
               <label for="category" class="form-label required-label">Category</label>
               <select class="form-select @error('category') is-invalid @enderror" name="category" id="category" style="cursor: pointer;">
                   <option value="" selected disabled>Choose Category</option>
-                  <option @if(old('category') == 'past_simple_regular_verbs') selected @endif value="past_simple_regular_verbs">Past Simple (Regular Verbs)</option>
-                  <option @if(old('category') == 'past_simple_irregular_verbs') selected @endif value="past_simple_irregular_verbs">Past Simple (Irregular Verbs)</option>
-                  <option @if(old('category') == 'past_continuous') selected @endif value="past_continuous">Past Continuous</option>
-                  <option @if(old('category') == 'past_perfect') selected @endif value="past_perfect">Past Perfect</option>
-                  <option @if(old('category') == 'storytelling') selected @endif value="storytelling">Storytelling and Practice</option>
+                  <option @if(old('category') == 'notes_example') selected @endif value="notes_example">Notes and Examples</option>
+                  <option @if(old('category') == 'exercises_activities') selected @endif value="exercises_activities">Exercises and Activities</option>
+                  <option @if(old('category') == 'sentences') selected @endif value="sentences">Sentences using Past Simple</option>
+                  <!-- <option @if(old('category') == 'past_perfect') selected @endif value="past_perfect">Past Perfect</option>
+                  <option @if(old('category') == 'storytelling') selected @endif value="storytelling">Storytelling and Practice</option> -->
               </select>
               @error('category')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
@@ -327,11 +327,11 @@
               <label for="categoryEdit" class="form-label required-label">Category</label>
               <select class="form-select @error('categoryEdit') is-invalid @enderror" name="categoryEdit" id="categoryEdit" style="cursor: pointer;">
                   <option value="" selected disabled>Choose Category</option>
-                  <option id="past_simple_regular_verbs" @if(old('categoryEdit') == 'past_simple_regular_verbs') selected @endif value="past_simple_regular_verbs">Past Simple (Regular Verbs)</option>
-                  <option id="past_simple_irregular_verbs" @if(old('categoryEdit') == 'past_simple_irregular_verbs') selected @endif value="past_simple_irregular_verbs">Past Simple (Irregular Verbs)</option>
-                  <option id="past_continuous" @if(old('categoryEdit') == 'past_continuous') selected @endif value="past_continuous">Past Continuous</option>
-                  <option id="past_perfect" @if(old('categoryEdit') == 'past_perfect') selected @endif value="past_perfect">Past Perfect</option>
-                  <option id="storytelling" @if(old('categoryEdit') == 'storytelling') selected @endif value="storytelling">Storytelling and Practice</option>
+                  <option id="notes_example" @if(old('categoryEdit') == 'notes_example') selected @endif value="notes_example">Notes and Examples</option>
+                  <option id="exercises_activities" @if(old('categoryEdit') == 'exercises_activities') selected @endif value="exercises_activities">Exercises and Activities</option>
+                  <option id="sentences" @if(old('categoryEdit') == 'sentences') selected @endif value="sentences">Sentences using Past Simple</option>
+                  <!-- <option id="past_perfect" @if(old('categoryEdit') == 'past_perfect') selected @endif value="past_perfect">Past Perfect</option>
+                  <option id="storytelling" @if(old('categoryEdit') == 'storytelling') selected @endif value="storytelling">Storytelling and Practice</option> -->
               </select>
               @error('categoryEdit')
               <div class="invalid-feedback" style="margin-bottom: -3px;">
